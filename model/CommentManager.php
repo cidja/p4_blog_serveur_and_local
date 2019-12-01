@@ -39,4 +39,6 @@ class CommentManager extends ManagerDb
         
         return $signalComments;
     }
+
+
 }

@@ -42,7 +42,7 @@
             <?= htmlspecialchars($comment["comment_date_fr"])  // Affichage de la date du commentaire ?> </p>
             <p><?= nl2br(htmlspecialchars($comment["comment"])) // Affichage du contenu du commentaire ?></p>
            
-            <a href="index.php?action=signalComment&amp;id=<?= $comment["id"]?>&post_id=<?= $comment["post_id"]?>" id="signallink">Signaler le commentaire</a><!--Utiliser pour renvoyer sur une page pour valider la signalisation de commentaire !-->
+            <button type="button"><a href="index.php?action=signalComment&amp;id=<?= $comment["id"]?>&post_id=<?= $comment["post_id"]?>" id="signallink">Signaler le commentaire</a></button><!--Utiliser pour renvoyer sur une page pour valider la signalisation de commentaire !-->
         <?php
 
         }
