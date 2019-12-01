@@ -1,0 +1,135 @@
+<?php //deviens notre routeur 
+session_start(); // enregistrement des paramètres pour l'admin source: http://www.lephpfacile.com/cours/18-les-sessions Ligne 64
+//source: https://openclassrooms.com/fr/courses/4670706-adoptez-une-architecture-mvc-en-php/4682351-creer-un-routeur#/id/r-4682481
+//include(dirname(__FILE__)."/model/Managerdb.php");
+include(dirname(__FILE__)."/controller/frontend.php");
+include(dirname(__FILE__)."/controller/backend.php");
+//include(dirname(__FILE__)."/model/PostManager.php"); //appel de la classe PostManager 
+//include(dirname(__FILE__)."/model/CommentManager.php"); //appel de la classe CommentManager 
+//include(dirname(__FILE__)."/model/SessionManager.php"); //appel de la classe SessionManager
+
+
+try { // on essai de faire des choses source: https://openclassrooms.com/fr/courses/4670706-adoptez-une-architecture-mvc-en-php/4689546-gerer-les-erreurs#/id/r-4689754
+    if(isset($_GET["action"])){
+        if($_GET["action"] == "listPosts"){ //si dans l'url action = listPosts on appel listPosts du controller
+            ToolsFrontend::listPosts(); //renvoi dans controller/frontend
+        }
+        elseif ($_GET["action"] == "post"){
+            if(isset($_GET['id']) && $_GET["id"] > 0){ //Si dans l'url action = post on appel post du controller
+                ToolsFrontend::post(); //renvoi dans controller/frontend
+            }
+            else {
+                // Erreur ! on arrête tout, on envoie une exception, donc on saute directement au catch
+                throw new Exception("Aucun identifiant de billet envoyé");
+            }
+        }
+        elseif ($_GET["action"] == "addComment") { //Si dans l'url action = addComment on appel on envoi les paramètres à la fonction addComment
+            //source: https://openclassrooms.com/fr/courses/4670706-adoptez-une-architecture-mvc-en-php/4683301-nouvelle-fonctionnalite-ajouter-des-commentaires#/id/r-4683671
+            if (isset($_GET["id"]) && $_GET["id"] > 0){
+                if (!empty($_POST["author"]) && !empty($_POST["comment"])) {
+                    ToolsFrontend::addComment($_GET["id"], $_POST["author"], $_POST["comment"]); //renvoi dans controller/frontend
+                }
+                else {
+                    /* a tester pour faire apparaître message a la soumission du formulaire
+                    <script>
+                    document.getElementById("submitbutton").addEventListener("click", function(e){
+                        e.preventDefault();
+                        console.log("on rentre");
+                    })
+                    let newP = document.createElement('p');
+                    newP.textContent =("Erreur tous les champs ne sont pas remplis !"); </script>*/
+                    throw new Exception("Erreur tous les champs ne sont pas remplis !");
+                }
+            }
+            else {
+            // Autre exception
+            throw new Exception("Erreur : aucun identifiant de billet envoyé");
+        }
+    }
+        
+        elseif ($_GET["action"] == "signalComment"){ //Pour signaler un commentaire 
+            ToolsFrontend::signalComment( $_GET["id"], $_GET["post_id"]); //Appel de la fonction signalComment du controller frontend avec comme paramètres le post_id du comment
+        }
+
+
+        //---------------------------partie Backend--------------------------------------------
+        
+        elseif ($_GET["action"] == "backend"){
+            if(isset($_SESSION["user"]) && isset($_SESSION["mdp"])){
+                ToolsBackend::listPosts(); // affichage du template backend
+            }
+            elseif(empty($_SESSION["user"]) && empty($_SESSION["mdp"])){ //Si $_SESSION empty on crée les variables $user et $mdp pour connexion backend
+                $user = htmlspecialchars($_POST["user"]); // htmlspecialchars pour éviter une faille de sécurité 
+                $mdp = htmlspecialchars($_POST["mdp"]); // htmlspecialchars pour éviter une faille de sécurité
+                if(($user == "admin") && ($mdp == "secret")){
+                    $_SESSION["user"] = $user;
+                    $_SESSION["mdp"] = $mdp;
+                    ToolsBackend::listPosts(); // affichage du template backend
+                } 
+            }
+            else {
+                throw new Exception("Erreur mauvais mot de passe ou identifiant");  
+            }
+        }
+
+        elseif ($_GET["action"] == "createPostView"){
+            header("location: view/backend/createPostView.php"); //envoi sur le formulaire 
+        }
+
+        elseif($_GET["action"] == "createPostViewConfirm"){ // Quand on est sur le formulaire on appel le trait createPost()
+            ToolsBackend::createPost($_POST["title"], $_POST["content"]);
+            header("location: index.php?action=backend"); //renvoi à l'accueil de backend
+        }
+
+        elseif($_GET["action"] == "postBackend"){ //quand clic sur vue détaillé pour un post
+            if(isset($_GET['id']) && $_GET["id"] > 0){ //Si dans l'url action = post on appel post du controller)
+                ToolsBackend::getPost();
+            }
+            else {
+                throw new Exception("Aucun identifiant de billet envoyé");
+            }
+        }
+        elseif($_GET["action"] == "updatePost"){
+            if(isset($_GET['id']) && $_GET["id"] > 0){
+                ToolsBackend::getPostForUpdate();
+                
+            }
+        }
+        elseif($_GET["action"] == "updatePostConfirm"){ //quand on confirme l'update du post
+            ToolsBackend::updatePost($_POST["title"], $_POST["content"], $_GET["id"]);
+            header("location: index.php?action=backend"); //renvoi à l'accueil de backend
+        }
+        elseif($_GET["action"] == "deletePost"){
+            if(isset($_GET['id']) && $_GET["id"] > 0){
+            ToolsBackend::deletePost($_GET["id"]);
+            header("location: index.php?action=backend"); //renvoi à l'accueil de backend
+            }
+            else {
+                throw new Exception("Aucun identifiant de billet envoyé");
+            }
+        }
+        elseif($_GET["action"] == "sessionDestroy"){
+            ToolsBackend::sessionStop();
+            header("location: index.php?action=listPosts");
+        }
+    }
+    else{
+        ToolsFrontend::listPosts(); //appel de listPosts() liste des posts
+        }
+}
+
+catch(Exception $e) // s'il y a une erreur, alors...
+{
+    echo "Erreur : " . $e->getMessage();
+}
+    /*
+        On charge le fichier controller.php (pour que les fonctions soient en mémoire, quand même !).
+    
+        On teste le paramètre action pour savoir quel contrôleur appeler. Si le paramètre n'est pas présent, 
+        par défaut on charge la liste des derniers billets (ligne 16). C'est comme ça qu'on indique ce que doit 
+        afficher la page d'accueil du site.
+    
+        On teste les différentes valeurs possibles pour notre paramètre action et on redirige vers le bon contrôleur à chaque fois.
+    
+    */
+
