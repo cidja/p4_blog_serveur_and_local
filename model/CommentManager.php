@@ -64,4 +64,12 @@ class CommentManager extends ManagerDb
         $deleteComment = $comment->execute(array($id));
     }
 
+    //Fonction pour compter nombre commentaire a modérer
+    public function countSignalComments()
+    {
+        $db = $this->dbConnect();
+        $countSignalComments = $db->query("SELECT COUNT(`signal`) FROM comments WHERE `signal` = 1");
+        return $countSignalComments;
+    }
+
 }

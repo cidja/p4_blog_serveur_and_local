@@ -35,7 +35,7 @@
         {
             $commentManager = new CommentManager(); //Création d'un objet
             $signalComments = $commentManager->checkSignalComment(); // Appel de la méthode checkSignalComment() de l'objet CommentManager
-
+            $countSignalComments = $commentManager->countSignalComments(); // Appel de la méthode countSignalComments() pour affichage du nombre de commentaire à modérer dans signalCommentsView
             require("view/backend/signalCommentsView.php"); // appel de la vue signalCommentsView.php
         }
 
@@ -52,6 +52,9 @@
             $commentManager = new CommentManager(); // Création de l'objet CommentManager()
             $deleteComment = $commentManager->deleteComment($id); // Appel de la méthode deleteComment avec en paramétre l'id du commentaire
         }
+        
+        
+
         //fonction pour créer un post
         public static function createPost($title,$content)
         {
@@ -74,6 +77,7 @@
             $postManager = new PostManager(); // Création d'un objet PostManager()
             $delete = $postManager->deletePost($postId); // Appel de la méthode deletePost de l'objet PostManager
         }
+
         public static function sessionStop()
         {
             $sessionManager = new SessionManager(); // Création d'un objet SessionManager()

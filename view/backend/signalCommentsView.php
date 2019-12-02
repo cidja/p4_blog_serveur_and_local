@@ -6,36 +6,45 @@ if(isset($_SESSION["user"]) && isset($_SESSION["mdp"])){ //on vérifie que l'on 
     ob_start(); ?>
  
     <h1>Administration super blog</h1>
-    <h3>Modération des commentaires<h3>
-
-    
+    <h3>Modération des commentaires</h3>
         <?php 
-        
-        while($data = $signalComments->fetch())
-        {
+            $resultCountSignalComments =  implode(',',$countSignalComments->fetch(PDO::FETCH_ASSOC)); //utilisation de FETCH_ASSOC source: https://www.php.net/manual/fr/pdostatement.fetch.php
         ?>
-        <div class="conteneurComment"> <!--utiliser pour créer un bloc pour chaque commentaires !-->
-            <div class="authorComment">
-                <?= htmlspecialchars($data["author"]); ?> 
-            </div>
-            <div class="commentHour"> 
-                le <?= $data['comment_date_fr'];?> 
-            </div>
-            <div id='commentsSignal'>
-                <?=$data["comment"]; ?>
-            </div> 
-            <div id="ApprouveOrNotComment">
-                <form action="/p4/index.php?action=signalCommentDecision&amp;id=<?= $data["id"]; ?>" method="post">
-                    <input type="radio" id="commentApprouve" name="commentChoice" value="commentApprouve">
-                    <label for="commentApprouve">Approuver le commentaire </label>
-                    <input type="radio" id="deleteComment" name="commentChoice" value="deleteComment">
-                    <label for="deleteComment">Supprimer le commentaire </label>
-                    <input type="submit" value="valider mon choix">
-                </form>
-            </div>
+        <div class="countSignalComments">
+            Il reste encore : <?= $resultCountSignalComments; ?> commentaires à modérer.
         </div>
+        <?php
+            foreach($signalComments as $data)
+    
+            {
+            ?>
+            <div class="conteneurComment"> <!--utiliser pour créer un bloc pour chaque commentaires !-->
+                <div class="authorComment">
+                    <?= htmlspecialchars($data["author"]); ?> 
+                </div>
+                <div class="commentHour"> 
+                    le <?= $data['comment_date_fr'];?> 
+                </div>
+                <div id='commentsSignal'>
+                    <?=$data["comment"]; ?>
+                </div> 
+                <div id="ApprouveOrNotComment">
+                    <form action="/p4/index.php?action=signalCommentDecision&amp;id=<?= $data["id"]; ?>" method="post">
+                        <input type="radio" id="commentApprouve" name="commentChoice" value="commentApprouve">
+                        <label for="commentApprouve">Approuver le commentaire </label>
+                        <input type="radio" id="deleteComment" name="commentChoice" value="deleteComment">
+                        <label for="deleteComment">Supprimer le commentaire </label>
+                        <input type="submit" value="valider mon choix">
+                    </form>
+                </div>
+            </div>
+            <!--lien pour retourner à la liste des billets !-->
+            
     <?php
     }
+    ?>
+    <a href="/p4/index.php?action=backend">Retour à la liste des billets </a>
+    <?php
     $signalComments->closeCursor();
 
     $content = ob_get_clean();

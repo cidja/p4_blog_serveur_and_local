@@ -117,6 +117,8 @@ try { // on essai de faire des choses source: https://openclassrooms.com/fr/cour
         //Appel pour modération des commentaires 
         elseif($_GET["action"] == "signalCommentsView"){
             ToolsBackend::checkSignalComment(); // Appel du trait checkSignalComment();
+           
+            
         }
         elseif($_GET["action"] == "signalCommentDecision"){
             if(isset($_GET['id']) && $_GET["id"] > 0){
