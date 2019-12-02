@@ -40,5 +40,28 @@ class CommentManager extends ManagerDb
         return $signalComments;
     }
 
+    // Fonction pour afficher tous les commentaires signalés
+    public function checkSignalComment() 
+    {
+        $db = $this->dbConnect(); // appel de $this
+        $signalComments = $db->query('SELECT id, author, comment, DATE_FORMAT(comment_date, "%d/%m/%Y à %Hh%imin%ss") AS comment_date_fr, `signal` FROM comments WHERE `signal` = 1 ORDER BY comment_date DESC');
+        return $signalComments;
+    }
+
+    //fonction pour valider un commentaire signalé
+    public function approuveComment($id)
+    {
+        $db= $this->dbConnect();
+        $approuveComment = $db->prepare("UPDATE comments set `signal` = 0 WHERE id= ?");
+        $affectedLines = $approuveComment->execute(array($id));
+    }
+
+    //Fonction pour supprimer un commentaire signalé
+    public function deleteComment($id)
+    {
+        $db= $this->dbConnect();
+        $comment=$db->prepare("DELETE FROM comments WHERE id=?");
+        $deleteComment = $comment->execute(array($id));
+    }
 
 }

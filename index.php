@@ -89,16 +89,21 @@ try { // on essai de faire des choses source: https://openclassrooms.com/fr/cour
                 throw new Exception("Aucun identifiant de billet envoyé");
             }
         }
+
+        //appel updatePostView
         elseif($_GET["action"] == "updatePost"){
             if(isset($_GET['id']) && $_GET["id"] > 0){
                 ToolsBackend::getPostForUpdate();
                 
             }
         }
+        //Appel updatePostConfirm donc la méthode updatePost
         elseif($_GET["action"] == "updatePostConfirm"){ //quand on confirme l'update du post
             ToolsBackend::updatePost($_POST["title"], $_POST["content"], $_GET["id"]);
             header("location: index.php?action=backend"); //renvoi à l'accueil de backend
         }
+
+        //appel la méthode delePost
         elseif($_GET["action"] == "deletePost"){
             if(isset($_GET['id']) && $_GET["id"] > 0){
             ToolsBackend::deletePost($_GET["id"]);
@@ -108,6 +113,29 @@ try { // on essai de faire des choses source: https://openclassrooms.com/fr/cour
                 throw new Exception("Aucun identifiant de billet envoyé");
             }
         }
+
+        //Appel pour modération des commentaires 
+        elseif($_GET["action"] == "signalCommentsView"){
+            ToolsBackend::checkSignalComment(); // Appel du trait checkSignalComment();
+        }
+        elseif($_GET["action"] == "signalCommentDecision"){
+            if(isset($_GET['id']) && $_GET["id"] > 0){
+                if($_POST["commentChoice"] == "commentApprouve"){
+                    ToolsBackend::approuveComment($_GET["id"]);
+                    header("location: index.php?action=signalCommentsView");
+                    
+                }
+                elseif($_POST["commentChoice"] == "deleteComment"){
+                    ToolsBackend::deleteComment($_GET["id"]);
+                    header("location: index.php?action=signalCommentsView");
+                }
+            }
+            else {
+                throw new Exception("Aucun id de post envoyé");
+            }
+        }
+
+        //Appel la méthode destroysession pour déconnexion de l'admim
         elseif($_GET["action"] == "sessionDestroy"){
             ToolsBackend::sessionStop();
             header("location: index.php?action=listPosts");

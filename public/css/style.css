@@ -6,3 +6,12 @@ header{
     display: flex;
     justify-content: space-around;
 }
+
+/* PARTIE COMMENTAIRES */
+.commentHour{
+    font-style: italic;
+}
+.conteneurComment{
+    font-size: 20px;
+    margin-top: 10px;
+}

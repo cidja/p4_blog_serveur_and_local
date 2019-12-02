@@ -8,6 +8,7 @@ if(isset($_SESSION["user"]) && isset($_SESSION["mdp"])){ //on vérifie que l'on 
     <h1>Administration super blog</h1>
     
     <div id="createpost"><a href="index.php?action=createPostView"><i class="fas fa-plus-circle"></i>Créer un post </a></div>
+    <div id="signalComments"><a href="index.php?action=signalCommentsView">Modération des commentaires</div>
     
     <?php
         while($data = $posts->fetch()) //récupération de $posts passé en paramètres dans le index.php qui viens lui même du model.php

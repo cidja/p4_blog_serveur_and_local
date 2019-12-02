@@ -21,7 +21,8 @@
             require("view/backend/postViewBackend.php"); //Affiche un post avec ses commentaires
         }
 
-        public static function getPostForUpdate() //affiche un post pour un update
+        //affiche un post pour un update
+        public static function getPostForUpdate() 
         {
             $postManager = new PostManager(); // Création d'un objet
             $post = $postManager->getPost($_GET["id"]); // appel de la function getPost de l'objet PostManager (un seul post(billet))
@@ -29,6 +30,28 @@
             require("view/backend/updateViewBackend.php");
         }
 
+        //fonction pour modération commentaire
+        public static function checkSignalComment()
+        {
+            $commentManager = new CommentManager(); //Création d'un objet
+            $signalComments = $commentManager->checkSignalComment(); // Appel de la méthode checkSignalComment() de l'objet CommentManager
+
+            require("view/backend/signalCommentsView.php"); // appel de la vue signalCommentsView.php
+        }
+
+        //Fonction pour approuvé un commentaire
+        public static function approuveComment($id)
+        {
+            $commentManager = new CommentManager();
+            $approuveComment = $commentManager->approuveComment($id); // Appel de la méthode approuveComment avec en paramétre l'id du commentaire
+        }
+
+        //Fonction pour delete un commentaire
+        public static function deleteComment($id)
+        {
+            $commentManager = new CommentManager(); // Création de l'objet CommentManager()
+            $deleteComment = $commentManager->deleteComment($id); // Appel de la méthode deleteComment avec en paramétre l'id du commentaire
+        }
         //fonction pour créer un post
         public static function createPost($title,$content)
         {
