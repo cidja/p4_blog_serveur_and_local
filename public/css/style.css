@@ -11,7 +11,16 @@ header{
 .commentHour{
     font-style: italic;
 }
+
 .conteneurComment{
     font-size: 20px;
     margin-top: 10px;
+}
+
+/* PARTIE POST */
+.postHour{
+    font-style: italic;
+}
+.postDetail{
+    margin-bottom: 40px;
 }
