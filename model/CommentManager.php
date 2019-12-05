@@ -37,11 +37,8 @@ class CommentManager extends ManagerDb
     public function signalComment($id) //fonction pour signaler un commentaire pour le faire remonter dans l'interface backend
     { //le but de la fonction est d'ajouter un TRUE sur la colonne signal de la table comments pour ensuite le faire remonter dans les signal sur le backend
         $db = $this->dbConnect(); //appel de $this S:https://openclassrooms.com/fr/courses/4670706-adoptez-une-architecture-mvc-en-php/4735671-passage-du-modele-en-objet#/id/r-4744592
-        $comments = $db->prepare("UPDATE comments SET `signal`=:signal WHERE id=:id");
-        $signalComments = $comments->execute(array(
-            "signal"        => 1,
-            "id"            =>$id
-        ));
+        $comments = $db->prepare("UPDATE comments SET comment_signal=1 WHERE id=?");
+        $signalComments = $comments->execute(array($id));
         
         return $signalComments;
     }
@@ -50,7 +47,7 @@ class CommentManager extends ManagerDb
     public function checkSignalComment() 
     {
         $db = $this->dbConnect(); // appel de $this
-        $signalComments = $db->query('SELECT id, author, comment, DATE_FORMAT(comment_date, "%d/%m/%Y à %Hh%imin%ss") AS comment_date_fr, `signal` FROM comments WHERE `signal` = 1 ORDER BY comment_date DESC');
+        $signalComments = $db->query('SELECT id, author, comment, DATE_FORMAT(comment_date, "%d/%m/%Y à %Hh%imin%ss") AS comment_date_fr, comment_signal FROM comments WHERE comment_signal = 1 ORDER BY comment_date DESC');
         return $signalComments;
     }
 
@@ -58,7 +55,7 @@ class CommentManager extends ManagerDb
     public function approuveComment($id)
     {
         $db= $this->dbConnect();
-        $approuveComment = $db->prepare("UPDATE comments set `signal` = 0 WHERE id= ?");
+        $approuveComment = $db->prepare("UPDATE comments set comment_signal	= 0 WHERE id= ?");
         $affectedLines = $approuveComment->execute(array($id));
     }
 
@@ -74,7 +71,7 @@ class CommentManager extends ManagerDb
     public function countSignalComments()
     {
         $db = $this->dbConnect();
-        $countSignalComments = $db->query("SELECT COUNT(`signal`) FROM comments WHERE `signal` = 1");
+        $countSignalComments = $db->query("SELECT COUNT(comment_signal) FROM comments WHERE comment_signal = 1");
         return $countSignalComments;
     }
 
