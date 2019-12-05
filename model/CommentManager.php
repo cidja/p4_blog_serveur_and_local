@@ -12,7 +12,7 @@ class CommentManager extends ManagerDb
     FROM posts
     INNER JOIN comments
     on posts.id = comments.post_id
-    WHERE posts.id = ?
+    WHERE posts.id = ? AND comments.comment_signal = 0 
     ORDER BY comment_date DESC');
     $comments->execute(array($postId));
     //SELECT id, post_id, author, comment, DATE_FORMAT(comment_date, "%d/%m/%Y à %Hh%imin%ss") AS comment_date_fr FROM comments WHERE post_id = ? ORDER BY comment_date DESC
@@ -28,7 +28,7 @@ class CommentManager extends ManagerDb
         $authorEpure     = htmlspecialchars($author);
         $commentEpure   = htmlspecialchars($comment);
         $db = $this->dbConnect(); //appel de $this S:https://openclassrooms.com/fr/courses/4670706-adoptez-une-architecture-mvc-en-php/4735671-passage-du-modele-en-objet#/id/r-4744592
-        $comments = $db->prepare("INSERT INTO comments(post_id, author, comment, comment_date)VALUES(?, ?, ?, NOW())");
+        $comments = $db->prepare("INSERT INTO comments(post_id, author, comment, comment_date, comment_signal)VALUES(?, ?, ?, NOW(),1)"); //comment_signal mis sur 1 car c'est l'admin qui valide les commentaires au cas par cas 
         $affectedLines = $comments->execute(array($postId, $author, $comment));
 
         return $affectedLines;

@@ -34,6 +34,7 @@
                 <input type="submit" id="submitbutton"/>
             </div>
         </form>
+        
         <?php
         while($comment = $comments->fetch()) // On parcours le tableau source: https://openclassrooms.com/fr/courses/4670706-adoptez-une-architecture-mvc-en-php/4678891-nouvelle-fonctionnalite-afficher-des-commentaires#/id/r-4681307
         {
@@ -46,6 +47,13 @@
         <?php
 
         }
+        ?>
+        
+        <div id="commentmessage">
+            Votre commentaire sera visible après validation par le webmaster.
+        </div>
+
+        <?php
         $comments->closeCursor(); //on libère le curseur pour une nouvelle requête
         
          $content = ob_get_clean(); 
