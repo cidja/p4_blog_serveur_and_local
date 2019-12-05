@@ -48,8 +48,8 @@
 
         }
         ?>
-        
-        <div id="commentmessage">
+
+        <div id="commentMessage">
             Votre commentaire sera visible après validation par le webmaster.
         </div>
 
