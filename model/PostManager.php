@@ -52,7 +52,7 @@ class PostManager  extends ManagerDb
     }
 
     //fonction utilisé pour supprimer un post
-    public function deletePost($postId){
+    public function deletePost($postId){ // lors de la suppression d'un post supprime également les commentaires associés source: https://openclassrooms.com/fr/courses/1959476-administrez-vos-bases-de-donnees-avec-mysql/1965264-options-des-cles-etrangeres#/id/r-1982839
         $db = $this->dbConnect(); //Connexion à la bdd
         $req =$db->prepare("DELETE FROM posts WHERE id= ?");
         $deletePost = $req->execute(array($postId));
