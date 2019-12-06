@@ -16,22 +16,7 @@ header{
     font-size: 20px;
     margin-top: 10px;
 }
-#commentMessage{
-    animation-duration : 1s;
-    animation-name: messageBlink;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
 
-}
-
-@keyframes messageBlink{
-    from {
-        color: black;
-    }
-    to {
-        color: red;
-    }
-}
 
 /* PARTIE POST */
 .postHour{
