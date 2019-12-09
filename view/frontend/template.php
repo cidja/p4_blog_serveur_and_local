@@ -14,14 +14,20 @@
     <body>
     <header>
     <!--Utiliser pour afficher le formulaire de connexion !-->
-    <div class="accessbackend"> 
-    
-        <form action="index.php?action=backend" method="post">
-        Accés adminstrateur :
-            <label for="user"><input type="text" name="user" id="user" placeholder="identifiant" required /></label>
-            <label for="mdp"><input type="password" name="mdp" id="mdp" placeholder="mot de passe" required /></label>
-            <input type="submit" value="connexion" />
-        </form>
+    <div class="row">
+        <div class="accessbackend col-md-6 ml-auto mt-2 mr-5 mb-2 rounded-lg bg-dark text-white"> 
+        
+            <form class="form-inline" action="index.php?action=backend" method="post">
+            Accés adminstrateur :
+                <label for="user">
+                    <input type="text" class="form-control ml-2 mt-2 mr-sm-2 mb-2  " name="user" id="user" placeholder="identifiant" required />
+                </label>
+                <label for="mdp">
+                    <input type="password" class="form-control mb-2 mt-2 mr-sm-2" name="mdp" id="mdp" placeholder="mot de passe" required />
+                </label>
+                <input type="submit" value="connexion" class="btn btn-outline-info" />
+            </form>
+        </div>
     </div>
     </header>
 

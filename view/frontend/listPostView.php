@@ -1,24 +1,34 @@
 <?php $title = "mon blog"; 
 
  ob_start(); ?>
-<h1>Mon super blog</h1>
-<p>Derniers billets du blog :</p>
-        
+
+<div class="container-fluid">
+    <div class="row">
+        <h1 class="rounded-lg col-md-12 container pt-3 bg-primary text-white text-uppercase text-center">Blog d'artiste</h1>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <h3 class="col-md-12 text-center">Derniers billets du blog :</h3>
+    </div>
+</div>
 <?php
     while($data = $posts->fetch()) //récupération de $posts passé en paramètres dans le index.php qui viens lui même du model.php
     {
 ?>
-    <div class="news">
-        <h3>
-            <?= htmlspecialchars($data['title']) ?>
-            <em>le <?= $data['creation_date_fr'] ?></em>
-        </h3>
-                
-        <p>
-            <?= nl2br(htmlspecialchars_decode($data['content'])) ?>
-            <br />
-            <em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a></em>
-        </p>
+    <div class="container-fluid">
+        <div class="news jumbotron">
+            <h3>
+                <?= htmlspecialchars($data['title']) ?>
+                <em>le <?= $data['creation_date_fr'] ?></em>
+            </h3>
+                    
+            <p>
+                <?= nl2br(htmlspecialchars_decode($data['content'])) ?>
+                <br />
+                <em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a></em>
+            </p>
+        </div>
     </div>
 <?php
 }
