@@ -7,6 +7,8 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title><?= $title ?></title>
         <link rel="stylesheet" href="public/css/style.css"/>
+        <!--Bootstrap cdn en dessous!-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/bad7172f0a.js" crossorigin="anonymous"></script> <!--cdn fontawesome source: https://fontawesome.com/kits/bad7172f0a/settings !-->
         <script src="https://cdn.tiny.cloud/1/er48ufvc7i8vzzseiz1tka82m7p8bec1kdtkmjzdoctvosu2/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
         <script>tinymce.init({selector:'#content'});</script> <!--CDN tony mce source: https://www.tiny.cloud/get-tiny/ !-->
