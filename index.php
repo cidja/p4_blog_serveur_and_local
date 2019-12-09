@@ -60,12 +60,13 @@ try { // on essai de faire des choses source: https://openclassrooms.com/fr/cour
             }
             elseif(empty($_SESSION["user"]) && empty($_SESSION["mdp"])){ //Si $_SESSION empty on crée les variables $user et $mdp pour connexion backend
                 $user = htmlspecialchars($_POST["user"]); // htmlspecialchars pour éviter une faille de sécurité 
-                $mdp = htmlspecialchars($_POST["mdp"]); // htmlspecialchars pour éviter une faille de sécurité
-                if(($user == "admin") && ($mdp == "secret")){
+                $mdp = $_POST["mdp"]; 
+                ToolsBackend::checkUser($user, $mdp);
+                /*if(($user == "admin") && ($mdp == "secret")){
                     $_SESSION["user"] = $user;
                     $_SESSION["mdp"] = $mdp;
                     ToolsBackend::listPosts(); // affichage du template backend
-                } 
+                } */
             }
             else {
                 throw new Exception("Erreur mauvais mot de passe ou identifiant");  

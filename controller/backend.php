@@ -3,8 +3,17 @@
     require_once("model/PostManager.php"); //appel de la classe PostManager require_once (une fois uniquement)
     require_once("model/CommentManager.php"); //appel de la classe CommentManager require_once (une fois uniquement)
     require_once("model/SessionManager.php");
+    require_once("model/UserManager.php"); // Appel de la classe UserManager
 
     trait ToolsBackend{
+        //fonction pour vérifier le mot de passe et le user
+        public static function checkUser($user, $mdp)
+        {
+            $userManager = new UserManager(); // Création de l'objet UserManager
+            $check = $userManager->checkUser($user, $mdp); // appel de la fonction de l'objet UserManager
+
+        }
+
         // Fonction pour lister les posts
         public static function listPosts()
         {
