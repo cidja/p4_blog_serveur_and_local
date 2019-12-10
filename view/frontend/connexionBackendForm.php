@@ -1,22 +1,36 @@
 <?php $title = "Connexion a l'administration"; 
 
  ob_start(); ?>
-
-<div class="row">
-        <div class="accessbackend col-md-12 ml-auto mt-5 mr-5 mb-2 rounded-lg bg-dark text-white"> 
-        
-            <form class="form-inline" action="index.php?action=backend" method="post">
-            Accés adminstrateur :
-                <label for="user">
-                    <input type="text" class="form-control ml-2 mt-2 mr-sm-2 mb-2  " name="user" id="user" placeholder="identifiant" required />
-                </label>
-                <label for="mdp">
-                    <input type="password" class="form-control mb-2 mt-2 mr-sm-2" name="mdp" id="mdp" placeholder="mot de passe" required />
-                </label>
-                <input type="submit" value="connexion" class="btn btn-outline-info" />
-            </form>
-        </div>
-    </div>
+<div id="backgroundLogin">
+   
+        <section id="sectionLogin">
+            <div class="container bg-secondary">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3 login-content pb-5 px-5">
+                        <form class="form-login" action="index.php?action=backend" method="post">
+                            <div class="text-center">
+                                Accés adminstrateur :
+                            </div>
+                            <div class="form-group mt-2 text-center">
+                                <label for="user">
+                                    <input type="text" class="form-control ml-2 mt-2 mr-sm-2 mb-2  " name="user" id="user" placeholder="identifiant" required />
+                                </label>
+                            </div>
+                            <div class="form-group text-center">
+                                <label for="mdp">
+                                    <input type="password" class="form-control ml-2 mb-2 mt-2 mr-sm-2" name="mdp" id="mdp" placeholder="mot de passe" required />
+                                </label>
+                            </div>
+                            <div class="text-center">
+                                <input class="btn btn-light" type="submit" value="connexion"/>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+</div>
 <?php
     $content = ob_get_clean();
 

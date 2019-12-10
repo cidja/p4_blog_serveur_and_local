@@ -24,3 +24,12 @@
 .postDetail{
     margin-bottom: 40px;
 }
+
+/* Partie admin form */
+#backgroundLogin{
+    height: 100%;
+}
+#sectionLogin{
+    padding-top: 250px;
+    padding-bottom: 250px;
+}
