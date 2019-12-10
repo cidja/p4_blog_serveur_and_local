@@ -2,16 +2,28 @@
 
  ob_start(); ?>
 
-<div class="container-fluid">
+
+<!--Utiliser pour afficher le formulaire de connexion !-->
     <div class="row">
-        <h1 class="rounded-lg col-md-12 container pt-3 bg-primary text-white text-uppercase text-center">Blog d'artiste</h1>
+        <div class="accessbackend col-md-6 ml-auto mt-2 mr-5 mb-2 rounded-lg bg-dark text-white"> 
+        
+            <form class="form-inline" action="index.php?action=backend" method="post">
+            Accés adminstrateur :
+                <label for="user">
+                    <input type="text" class="form-control ml-2 mt-2 mr-sm-2 mb-2  " name="user" id="user" placeholder="identifiant" required />
+                </label>
+                <label for="mdp">
+                    <input type="password" class="form-control mb-2 mt-2 mr-sm-2" name="mdp" id="mdp" placeholder="mot de passe" required />
+                </label>
+                <input type="submit" value="connexion" class="btn btn-outline-info" />
+            </form>
+        </div>
     </div>
-</div>
-<div class="container-fluid">
-    <div class="row">
-        <h3 class="col-md-12 text-center">Derniers billets du blog :</h3>
+    <div class="container-fluid">
+        <div class="row">
+            <h3 class="col-md-12 text-center">Derniers billets du blog :</h3>
+        </div>
     </div>
-</div>
 <?php
     while($data = $posts->fetch()) //récupération de $posts passé en paramètres dans le index.php qui viens lui même du model.php
     {
@@ -19,8 +31,10 @@
     <div class="container-fluid">
         <div class="news jumbotron">
             <h3>
-                <?= htmlspecialchars($data['title']) ?>
-                <em>le <?= $data['creation_date_fr'] ?></em>
+            <a href="index.php?action=post&amp;id=<?= $data['id'] ?>"><?= htmlspecialchars($data['title']) ?></a>
+                <div>
+                    <em>posté le  <?= $data['creation_date_fr'] ?></em>
+                </div>
             </h3>
                     
             <p>

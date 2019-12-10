@@ -1,23 +1,25 @@
 <!--Dans cette vue, on affiche le billet (récupéré avec $post ) et les commentaires (récupérés dans$comments ) !-->
         <?php
         session_start();
-        $title = htmlspecialchars($post["title"]); //définition du titre dans la variable $title 
+        $title = $post["title"]; //définition du titre dans la variable $title 
         
         ob_start();  // On commence la "capture" du code html suivant?> 
-        <h1>Mon super blog</h1>
+        
         <p><a href="index.php">Retour à la liste des billets </a></p>
-
-        <div class="news">
-            <h3>
-                <?= htmlspecialchars($post['title']) //affichage du titre du billet ?> 
-                <em>le <?= htmlspecialchars($post['creation_date_fr']) // affichage de la date de création du billet ?></em>
-            </h3>
-
-            <p>
-                <?= nl2br(htmlspecialchars_decode($post["content"])) // Affichage du contenu du billet ?>
-            </p>
+        <div class="container-fluid">
+            <div class="news jumbotron">
+                <h3>
+                    <?= $post['title'] //affichage du titre du billet ?> 
+                    <div>
+                        <em>posté le <?= $post['creation_date_fr'] // affichage de la date de création du billet ?></em>
+                    </div>
+                </h3>
+                
+                <p>
+                    <?= nl2br(htmlspecialchars_decode($post["content"])) // Affichage du contenu du billet ?>
+                </p>
+            </div>
         </div>
-
         <h2>Commentaires </h2>
         <!-- formulaire pour ajouter un commentaire !-->
         <!-- source: https://openclassrooms.com/fr/courses/4670706-adoptez-une-architecture-mvc-en-php/4683301-nouvelle-fonctionnalite-ajouter-des-commentaires#/id/r-4683667 !-->
@@ -39,8 +41,8 @@
         while($comment = $comments->fetch()) // On parcours le tableau source: https://openclassrooms.com/fr/courses/4670706-adoptez-une-architecture-mvc-en-php/4678891-nouvelle-fonctionnalite-afficher-des-commentaires#/id/r-4681307
         {
         ?>
-            <p><strong><?= htmlspecialchars($comment["author"]) // Affichage de l'auteur du commentaire ?></strong> le
-            <?= htmlspecialchars($comment["comment_date"])  // Affichage de la date du commentaire ?> </p>
+            <p><strong><?= $comment["author"] // Affichage de l'auteur du commentaire ?></strong> le
+            <?= $comment["comment_date"]  // Affichage de la date du commentaire ?> </p>
             <p><?= nl2br(htmlspecialchars_decode($comment["comment"])) // Affichage du contenu du commentaire ?></p>
            
             <button type="button"><a href="index.php?action=signalComment&amp;id=<?= $comment["id"]?>&post_id=<?= $comment["post_id"]?>" id="signallink">Signaler le commentaire</a></button><!--Utiliser pour renvoyer sur une page pour valider la signalisation de commentaire !-->
