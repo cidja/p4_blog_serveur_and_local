@@ -5,6 +5,16 @@ require_once("model/CommentManager.php"); //appel de la classe CommentManager re
 
 
 trait ToolsFrontend{ //création d'un trait pour pouvoir rester dans l'appel de POO
+    public static function home()
+    {
+        require("view/frontend/home.php");
+    }
+
+    public static function formAdmin()
+    {
+        require("view/frontend/connexionBackendForm.php");
+    }
+    
     public static function listPosts()
     {
         $postManager = new PostManager(); //Création d'un objet

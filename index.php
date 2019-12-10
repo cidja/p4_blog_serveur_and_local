@@ -11,7 +11,10 @@ include(dirname(__FILE__)."/controller/backend.php");
 
 try { // on essai de faire des choses source: https://openclassrooms.com/fr/courses/4670706-adoptez-une-architecture-mvc-en-php/4689546-gerer-les-erreurs#/id/r-4689754
     if(isset($_GET["action"])){
-        if($_GET["action"] == "listPosts"){ //si dans l'url action = listPosts on appel listPosts du controller
+        if($_GET["action"] == "home"){
+            ToolsFrontend::home();
+        }
+        elseif($_GET["action"] == "listPosts"){ //si dans l'url action = listPosts on appel listPosts du controller
             ToolsFrontend::listPosts(); //renvoi dans controller/frontend
         }
         elseif ($_GET["action"] == "post"){
@@ -50,7 +53,10 @@ try { // on essai de faire des choses source: https://openclassrooms.com/fr/cour
         elseif ($_GET["action"] == "signalComment"){ //Pour signaler un commentaire 
             ToolsFrontend::signalComment( $_GET["id"], $_GET["post_id"]); //Appel de la fonction signalComment du controller frontend avec comme paramètres le post_id du comment
         }
-
+        //--------------------------partie appel connexion form admin-------------------------
+        elseif ($_GET["action"] == "formAdmin"){
+            ToolsFrontend::formAdmin();
+        }
 
         //---------------------------partie Backend--------------------------------------------
         
@@ -145,7 +151,8 @@ try { // on essai de faire des choses source: https://openclassrooms.com/fr/cour
         }
     }
     else{
-        ToolsFrontend::listPosts(); //appel de listPosts() liste des posts
+        ToolsFrontend::home();
+        //ToolsFrontend::listPosts(); //appel de listPosts() liste des posts
         }
 }
 

@@ -13,11 +13,19 @@
 
     <body>
     <header>
-    <div class="container-fluid">
-        <div class="row">
-            <h1 class="rounded-lg col-md-12 container p-3 bg-primary text-white text-uppercase text-center">Blog d'artiste</h1>
-        </div>
-    </div>
+        <nav class="navbar navbar-expand-md navbar-dark navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" title="page d'accueil" href="index.php?action=home">Jean Forteroche</a>
+                <ul id="navbarToggler" class="nav collapse navbar-collapse flex-md-row justify-content-md-end align-items-sm-start">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?action=listPosts">Articles</a>
+                    </li>
+                    <li class="nav-item ml-3">
+                        <a id="adminLink" class="btn btn-secondary" title="login" href="index.php?action=formAdmin">Connexion</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </header>
 
         <?= $content ?> <!--va contenir ce que l'on veut mettre dedans direction listPostView.php !-->

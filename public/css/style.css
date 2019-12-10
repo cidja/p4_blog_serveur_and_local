@@ -1,6 +1,5 @@
-header{
-    display: flex;
-    justify-content: flex-end;
+*, ::after, ::before{
+    box-sizing: border-box;
 }
 .menuposts{
     display: flex;

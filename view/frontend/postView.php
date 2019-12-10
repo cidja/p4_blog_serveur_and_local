@@ -5,7 +5,7 @@
         
         ob_start();  // On commence la "capture" du code html suivant?> 
         
-        <p><a href="index.php">Retour à la liste des billets </a></p>
+        <p><a href="index.php?action=listPosts">Retour à la liste des billets </a></p>
         <div class="container-fluid">
             <div class="news jumbotron">
                 <h3>
