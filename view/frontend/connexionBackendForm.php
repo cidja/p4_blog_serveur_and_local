@@ -4,11 +4,11 @@
 <div id="backgroundLogin">
    
         <section id="sectionLogin">
-            <div class="container bg-secondary">
-                <div class="row">
-                    <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3 login-content pb-5 px-5">
+            <div class="container bg-success rounded border border-success">
+                <div class="row justify-content-center">
+                    <div class="mb-5 mt-4">
                         <form class="form-login" action="index.php?action=backend" method="post">
-                            <div class="text-center">
+                            <div class="text-center text-white">
                                 Accés adminstrateur :
                             </div>
                             <div class="form-group mt-2 text-center">
