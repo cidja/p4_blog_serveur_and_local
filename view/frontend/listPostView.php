@@ -17,16 +17,16 @@
     <div class="container-fluid">
         <div class="news jumbotron">
             <h3>
-            <a href="index.php?action=post&amp;id=<?= $data['id'] ?>"><?= htmlspecialchars($data['title']) ?></a>
+            <a class="text-success" href="index.php?action=post&amp;id=<?= $data['id'] ?>"><?= htmlspecialchars($data['title']) ?></a>
                 <div>
-                    <em>posté le  <?= $data['creation_date_fr'] ?></em>
+                    <div class="font-italic"> posté le  <?= $data['creation_date_fr'] ?></div>
                 </div>
             </h3>
                     
             <p>
                 <?= nl2br(htmlspecialchars_decode($data['content'])) ?>
                 <br />
-                <em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a></em>
+                <a class="text-success font-italic" href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a>
             </p>
         </div>
     </div>
