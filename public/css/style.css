@@ -1,6 +1,9 @@
 *, ::after, ::before{
     box-sizing: border-box;
 }
+body{
+    margin-top: 56px !important; /*Correspond à la taille du menu fixe */
+}
 .menuposts{
     display: flex;
     justify-content: space-around;
@@ -30,6 +33,6 @@
     height: 100%;
 }
 #sectionLogin{
-    padding-top: 250px;
-    padding-bottom: 250px;
+    padding-top: 180px;
+    padding-bottom: 180px;
 }
