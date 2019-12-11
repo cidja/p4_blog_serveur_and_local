@@ -25,7 +25,7 @@
                 </button>
 
                 <!--Navbar link !-->
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <div class="collapse navbar-collapse justify-content-md-end align-items-sm-start" id="collapsibleNavbar">
                 <ul class="navbar-nav">
                 <li class="nav-item ml-1">
                     <a class="nav-link" href="index.php?action=listPosts">Articles</a>
