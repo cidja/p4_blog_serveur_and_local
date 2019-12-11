@@ -10,6 +10,15 @@ body{
 }
 
 /* PARTIE COMMENTAIRES */
+#viewComment{
+    background-color: grey;
+    border-radius: 15px;
+}
+.comment{
+    background-color: white;
+    border-radius: 15px;
+}
+
 .commentHour{
     font-style: italic;
 }

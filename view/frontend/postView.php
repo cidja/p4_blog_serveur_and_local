@@ -21,24 +21,41 @@
             </div>
         </div>
 
-
-        <?php
-        while($comment = $comments->fetch()) // On parcours le tableau source: https://openclassrooms.com/fr/courses/4670706-adoptez-une-architecture-mvc-en-php/4678891-nouvelle-fonctionnalite-afficher-des-commentaires#/id/r-4681307
-        {
-        ?>
-            <p><strong><?= $comment["author"] // Affichage de l'auteur du commentaire ?></strong> le
-            <?= $comment["comment_date"]  // Affichage de la date du commentaire ?> </p>
-            <p><?= nl2br(htmlspecialchars_decode($comment["comment"])) // Affichage du contenu du commentaire ?></p>
-           
-            <button type="button"><a href="index.php?action=signalComment&amp;id=<?= $comment["id"]?>&post_id=<?= $comment["post_id"]?>" id="signallink">Signaler le commentaire</a></button><!--Utiliser pour renvoyer sur une page pour valider la signalisation de commentaire !-->
-    </div> <!--Fin div backgroundPostView !-->
-        <?php
-
-        }
-        
-        $comments->closeCursor(); //on libère le curseur pour une nouvelle requête
-        ?>
-
+        <div class="container">
+            <section class="mb-4 pt-2 pb-4" id="viewComment">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 offset-lg-2">
+                            <h5 class="text-center text-white">Commentaires</h5>
+                            <?php
+                             while($comment = $comments->fetch()) // On parcours le tableau source: https://openclassrooms.com/fr/courses/4670706-adoptez-une-architecture-mvc-en-php/4678891-nouvelle-fonctionnalite-afficher-des-commentaires#/id/r-4681307
+                                {
+                            ?>
+                            <div class="comment mb-2">
+                                <div class="row">
+                                    <div class="col-md-12 d-flex">
+                                        <span class="ml-2 font-weight-bold"><?= $comment["author"] // Affichage de l'auteur du commentaire ?></span>
+                                        - le <?= $comment["comment_date"]  // Affichage de la date du commentaire ?>
+                                    </div>
+                                    <div class="col-md-9 ml-2">
+                                        <?= nl2br(htmlspecialchars_decode($comment["comment"])) // Affichage du contenu du commentaire ?>
+                                    </div>
+                                    <div class="col-3 col-sm-4 col-md-2 ml-5 ml-sm-auto offset-sm-7 offset-md-9 mt-2 mb-3 mr-2">
+                                        <button class="btn btn-outline-success" data-toggle="button" aria-pressed="false" autocomplete="off" type="button">
+                                            <a class="text-success" href="index.php?action=signalComment&amp;id=<?= $comment["id"]?>&post_id=<?= $comment["post_id"]?>" id="signallink">Signaler</a>
+                                        </button><!--Utiliser pour renvoyer sur une page pour valider la signalisation de commentaire !-->
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
+                                }
+                            $comments->closeCursor(); //on libère le curseur pour une nouvelle requête
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
         <div class="container">
             <section id="addComment">
                 <div class="container bg-success mb-5 rounded">
@@ -69,7 +86,7 @@
         </div>
         
         
-        
+    </div> <!--Fin div backgroundPostView !-->
         <?php
          $content = ob_get_clean(); 
          require("template.php"); 
