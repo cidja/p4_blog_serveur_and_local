@@ -5,7 +5,7 @@
         
         ob_start();  // On commence la "capture" du code html suivant?> 
     <div id="backgroundPostView">
-        <p><a href="index.php?action=listPosts">Retour à la liste des billets </a></p>
+        
         <div class="container">
             <div class="news jumbotron">
                 <h3>
@@ -40,10 +40,19 @@
                                     <div class="col-md-9 ml-2">
                                         <?= nl2br(htmlspecialchars_decode($comment["comment"])) // Affichage du contenu du commentaire ?>
                                     </div>
-                                    <div class="col-3 col-sm-4 col-md-2 ml-5 ml-sm-auto offset-sm-7 offset-md-9 mt-2 mb-3 mr-2">
+                                    <div class="col-6 col-sm-4 col-md-4 offset-sm-4 offset-md-7 mt-2 mb-3 mr-2">
+                                    <?php if ($comment["comment_signal"] == 0){ //condition qui vérifie si comment_signal = 1 ou 0
+                                        ?>
                                         <button class="btn btn-outline-success" data-toggle="button" aria-pressed="false" autocomplete="off" type="button">
                                             <a class="text-success" href="index.php?action=signalComment&amp;id=<?= $comment["id"]?>&post_id=<?= $comment["post_id"]?>" id="signallink">Signaler</a>
                                         </button><!--Utiliser pour renvoyer sur une page pour valider la signalisation de commentaire !-->
+                                        <?php
+                                        } else {
+                                            ?>
+                                            <button class="btn btn-danger">En attente de modération</button>
+                                            <?php
+                                        }
+                                        ?>
                                     </div>
                                 </div>
                             </div>
