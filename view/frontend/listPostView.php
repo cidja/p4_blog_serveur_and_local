@@ -5,6 +5,7 @@
 
 <!--Utiliser pour afficher le formulaire de connexion !-->
 <div id="backgroundListPostView">
+    <h1 class="text-center text-uppercase">Liste des articles publiés</h1>
     <div class="container-fluid">
         <div class="row">
             <h3 class="col-md-12 text-center text-uppercase text-white">Derniers billets du blog :</h3>

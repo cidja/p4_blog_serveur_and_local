@@ -5,7 +5,7 @@
         
         ob_start();  // On commence la "capture" du code html suivant?> 
     <div id="backgroundPostView">
-        
+        <h1 class="text-center text-uppercase">Billet simple pour l'Alaska</h1>
         <div class="container">
             <div class="news jumbotron">
                 <h3>

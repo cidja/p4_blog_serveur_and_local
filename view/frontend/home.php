@@ -12,7 +12,7 @@ ob_start(); //Commencement de la capture ?>
                             <div class="text-center">
                                 <div id="titleHome">
                                     <h1>Bienvenue sur Le blog de Jean Forteroche</h1>
-                                    <p>Ce blog est une nouvelle approche que je tente, vous allez pouvoir découvrir la naissance de mon roman,
+                                    <p>Ce blog est une nouvelle approche que je tente, vous allez pouvoir découvrir la naissance de mon roman "Billet simple pour l'Alaska",
                                         en effet je publie réguliérement des article avec des chapitres de mon livre, j'attends vos commentaires pour ensuite le modifier pour qu'il 
                                         corresponde le mieux à vos attentes.</p>
                                     <p>Bonne lecture à tous</p>
