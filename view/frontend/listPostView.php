@@ -4,10 +4,10 @@
 
 
 <!--Utiliser pour afficher le formulaire de connexion !-->
-    
+<div id="backgroundListPostView">
     <div class="container-fluid">
         <div class="row">
-            <h3 class="col-md-12 text-center">Derniers billets du blog :</h3>
+            <h3 class="col-md-12 text-center text-uppercase text-white">Derniers billets du blog :</h3>
         </div>
     </div>
 <?php
@@ -32,6 +32,9 @@
     </div>
 <?php
 }
+?>
+</div> <!--fin de div class="backgroundListPostView" !-->
+<?php
 $posts->closeCursor();
 
  $content = ob_get_clean();

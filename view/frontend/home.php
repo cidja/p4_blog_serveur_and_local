@@ -5,9 +5,9 @@ ob_start(); //Commencement de la capture ?>
 <div id="blocPage">
     <div id="contentHome">
         <div class="col-12 d-flex justify-content-center">
-            <div id="backgroundHome" class="col-10">
+            <div id="filterHome" class="col-10">
                 <section id="headerHome">
-                    <div class="container">
+                    <div class="container text-white">
                         <div class="row">
                             <div class="text-center">
                                 <div id="titleHome">
@@ -22,7 +22,7 @@ ob_start(); //Commencement de la capture ?>
                     </div>
                 </section>
                 <section id="sectionHome1">
-                    <div class="container">
+                    <div class="container text-white">
                         <div class="row">
                             <div class="text-center">
                                 <h2>Un roman en ligne ?</h2>
@@ -35,7 +35,7 @@ ob_start(); //Commencement de la capture ?>
                     </div>
                 </section>
                 <section id="sectionHome2">
-                    <div class="container">
+                    <div class="container text-white">
                         <div class="row">
                             <div class="text-center">
                                 <h2>Consulter les articles</h2>
