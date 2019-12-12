@@ -4,33 +4,47 @@ if(isset($_SESSION["user"]) && isset($_SESSION["mdp"])){ //on vérifie que l'on 
     $title = "Admin mon blog"; 
 
     ob_start(); ?>
- 
-    <h1>Administration super blog</h1>
+    <div class="container">
+        <div class="row">
+            <h1 class="mx-auto">Interface d'administration</h1>
+        </div>
+        <div class="row d-flex justify-content-between mb-5">
+            <div id="createpost"><a class="btn btn-success" href="index.php?action=createPostView"><i class="fas fa-plus-circle"></i>Créer un post </a></div>
+            <div id="signalComments"><a class="btn btn-success" href="index.php?action=signalCommentsView">Modération des commentaires</a></div>
+        </div>
     
-    <div id="createpost"><a href="index.php?action=createPostView"><i class="fas fa-plus-circle"></i>Créer un post </a></div>
-    <div id="signalComments"><a href="index.php?action=signalCommentsView">Modération des commentaires</div>
     
     <?php
         while($data = $posts->fetch()) //récupération de $posts passé en paramètres dans le index.php qui viens lui même du model.php
         {
     ?>
-        <div class="news">
-            <div class="menuposts">
-                <div id="readpost"><a href="index.php?action=postBackend&amp;id=<?= $data["id"]; ?>"><i class="fas fa-search-plus"></i>Vue détaillée</a></div>
-                <div id="updatepost"><a href="index.php?action=updatePost&amp;id=<?= $data["id"]; ?>"><i class="fas fa-edit"></i>Modifier le post</a></div> <!--utilisation de $data["id"] pour le récupérer dans l'index.php !-->
-                <div id="deletepost"><a href="index.php?action=deletePost&amp;id=<?= $data["id"]; ?>"><i class="fas fa-trash-alt"></i>Supprimer le post</a></div>
+        <div class="container jumbotron">
+            <div class="row d-flex justify-content-between mb-4">
+                <div id="readpost"><a class="btn btn-success" href="index.php?action=postBackend&amp;id=<?= $data["id"]; ?>"><i class="fas fa-search-plus"></i>Vue détaillée</a></div>
+                <div id="updatepost"><a class="btn btn-success" href="index.php?action=updatePost&amp;id=<?= $data["id"]; ?>"><i class="fas fa-edit"></i>Modifier le post</a></div> <!--utilisation de $data["id"] pour le récupérer dans l'index.php !-->
+                <div id="deletepost"><a class="btn btn-success" href="index.php?action=deletePost&amp;id=<?= $data["id"]; ?>"><i class="fas fa-trash-alt"></i>Supprimer le post</a></div>
             </div>
-            <h3 class="postTitle">
-                <?= htmlspecialchars($data['title']) ?>
-                <div class="postHour">posté le : <?= $data['creation_date_fr'] ?></div>
-            </h3>
-                    
-            <div class="postDetail">
-                <?= nl2br(htmlspecialchars_decode($data['content'])); //utilisation de htmlspecialchars_decode pour afficher les infos en mode texte et pas en html brut source: https://askcodez.com/comment-afficher-du-html-a-partir-dune-base-de-donnees-mysql-en-php.html ?>
+            <div class="container-fluid">
+                <h3>
+                    <?= htmlspecialchars($data['title']) ?></a>
+                    <div>
+                        <div class="font-italic"> posté le  <?= $data['creation_date_fr'] ?></div>
+                    </div>
+                </h3>      
+                <div>
+                    <?= nl2br(htmlspecialchars_decode($data['content'])) ?>
+                    <div>
+                        <a class="text-success font-italic" href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a>
+                    </div>
+                </div>
             </div>
         </div>
     <?php
     }
+    ?>
+    </div> <!-- Fin du div class container premier !-->
+    <?php
+
     $posts->closeCursor();
 
     $content = ob_get_clean();
