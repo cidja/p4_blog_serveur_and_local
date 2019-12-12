@@ -28,7 +28,7 @@ class CommentManager extends ManagerDb
         $authorEpure     = htmlspecialchars($author);
         $commentEpure   = htmlspecialchars($comment);
         $db = $this->dbConnect(); //appel de $this S:https://openclassrooms.com/fr/courses/4670706-adoptez-une-architecture-mvc-en-php/4735671-passage-du-modele-en-objet#/id/r-4744592
-        $comments = $db->prepare("INSERT INTO comments(post_id, author, comment, comment_date, comment_signal)VALUES(?, ?, ?, NOW(),0)"); //comment_signal mis sur 1 car c'est l'admin qui valide les commentaires au cas par cas 
+        $comments = $db->prepare("INSERT INTO comments(post_id, author, comment, comment_date, comment_signal)VALUES(?, ?, ?, NOW(),0)"); //comment_signal mis sur 0 
         $affectedLines = $comments->execute(array($postId, $author, $comment));
 
         return $affectedLines;

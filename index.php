@@ -1,12 +1,10 @@
 <?php //deviens notre routeur 
 session_start(); // enregistrement des paramètres pour l'admin source: http://www.lephpfacile.com/cours/18-les-sessions Ligne 64
 //source: https://openclassrooms.com/fr/courses/4670706-adoptez-une-architecture-mvc-en-php/4682351-creer-un-routeur#/id/r-4682481
-//include(dirname(__FILE__)."/model/Managerdb.php");
+
 include(dirname(__FILE__)."/controller/frontend.php");
 include(dirname(__FILE__)."/controller/backend.php");
-//include(dirname(__FILE__)."/model/PostManager.php"); //appel de la classe PostManager 
-//include(dirname(__FILE__)."/model/CommentManager.php"); //appel de la classe CommentManager 
-//include(dirname(__FILE__)."/model/SessionManager.php"); //appel de la classe SessionManager
+
 
 
 try { // on essai de faire des choses source: https://openclassrooms.com/fr/courses/4670706-adoptez-une-architecture-mvc-en-php/4689546-gerer-les-erreurs#/id/r-4689754
@@ -30,17 +28,13 @@ try { // on essai de faire des choses source: https://openclassrooms.com/fr/cour
             //source: https://openclassrooms.com/fr/courses/4670706-adoptez-une-architecture-mvc-en-php/4683301-nouvelle-fonctionnalite-ajouter-des-commentaires#/id/r-4683671
             if (isset($_GET["id"]) && $_GET["id"] > 0){
                 if (!empty($_POST["author"]) && !empty($_POST["comment"])) {
-                    ToolsFrontend::addComment($_GET["id"], $_POST["author"], $_POST["comment"]); //renvoi dans controller/frontend
+                    $id = htmlspecialchars($_GET["id"]);
+                    $author     = htmlspecialchars($_POST["author"]);
+                    $comment    = htmlspecialchars($_POST["comment"]);
+                    ToolsFrontend::addComment($id, $author, $comment); //renvoi dans controller/frontend
                 }
                 else {
-                    /* a tester pour faire apparaître message a la soumission du formulaire
-                    <script>
-                    document.getElementById("submitbutton").addEventListener("click", function(e){
-                        e.preventDefault();
-                        console.log("on rentre");
-                    })
-                    let newP = document.createElement('p');
-                    newP.textContent =("Erreur tous les champs ne sont pas remplis !"); </script>*/
+                    
                     throw new Exception("Erreur tous les champs ne sont pas remplis !");
                 }
             }
