@@ -1,21 +1,32 @@
 <?php
-        session_start();
+        //session_start();
         $title = htmlspecialchars($post["title"]); //définition du titre dans la variable $title 
         
-        ob_start();  // On commence la "capture" du code html suivant?> 
-        <h1>Mon super blog</h1>
-        <p><a href="index.php?action=backend">Retour à la liste des billets </a></p>
-
-        <div class="news">
-            <h3>
-                <?= htmlspecialchars($post['title']) //affichage du titre du billet ?> 
-                <em>le <?= htmlspecialchars($post['creation_date_fr']) // affichage de la date de création du billet ?></em>
-            </h3>
-
-            <p>
-                <?= nl2br(htmlspecialchars_decode($post["content"])) // Affichage du contenu du billet ?>
-            </p>
+        ob_start();  // On commence la "capture" du code html suivant?>
+        <div id="backgroundPostView">
+        
+        <div class="container">
+            <div class="news jumbotron">
+                <h3>
+                    <?= $post['title'] //affichage du titre du billet ?> 
+                    <div>
+                        <em>posté le <?= $post['creation_date_fr'] // affichage de la date de création du billet ?></em>
+                    </div>
+                </h3>
+                
+                <div>
+                    <?= nl2br(htmlspecialchars_decode($post["content"])) // Affichage du contenu du billet ?>
+                </div>
+                <div>
+                    <a class="btn btn-info" href="index.php?action=backend">Retour à la liste des billets </a>
+                </div>
+            </div>
         </div>
+</div>
+
+
+        
+
         <?php
         $content = ob_get_clean(); 
 

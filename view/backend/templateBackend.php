@@ -18,16 +18,7 @@
         
        
     </head>
-    <header>
-    <!--Utiliser pour afficher le formulaire de connexion !-->
-    <div class="container accessbackend"> 
-        <div class="row d-flex flex-row-reverse">
-            <form action="index.php?action=sessionDestroy" method="post">
-            <input class="btn btn-warning btn-lg" type="submit" value="DECONNEXION" />
-            </form>
-        </div>
-    </div>
-    </header>
+    
     
     <body>
     

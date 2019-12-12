@@ -4,6 +4,16 @@ if(isset($_SESSION["user"]) && isset($_SESSION["mdp"])){ //on vérifie que l'on 
     $title = "Admin mon blog"; 
 
     ob_start(); ?>
+    <header>
+    <!--Utiliser pour afficher le formulaire de connexion !-->
+    <div class="container accessbackend"> 
+        <div class="row d-flex flex-row-reverse">
+            <form action="index.php?action=sessionDestroy" method="post">
+            <input class="btn btn-warning btn-lg" type="submit" value="DECONNEXION" />
+            </form>
+        </div>
+    </div>
+    </header>
     <div class="container">
         <div class="row">
             <h1 class="mx-auto">Interface d'administration</h1>
