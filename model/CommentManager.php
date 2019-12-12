@@ -23,7 +23,7 @@ class CommentManager extends ManagerDb
     //fonction pour ajout d'un comentaire
     public function postComment($postId, $author, $comment) 
     {
-        //utilisation de htmlspecialchars pour éviter des pb de sécurité
+        //utilisation de htmlspecialchars pour éviter des pb de sécurité 
         $postIdEpure    = htmlspecialchars($postId);
         $authorEpure     = htmlspecialchars($author);
         $commentEpure   = htmlspecialchars($comment);

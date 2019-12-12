@@ -18,7 +18,9 @@
         public static function listPosts()
         {
             $postManager = new PostManager(); //Création d'un objet
+            $commentManager = new CommentManager(); //Création d'un objet
             $posts = $postManager->getPosts(); //Appel de la fonction de l'objet source: https://openclassrooms.com/fr/courses/4670706-adoptez-une-architecture-mvc-en-php/4735671-passage-du-modele-en-objet#/id/r-4744655
+            $countSignalComments = $commentManager->countSignalComments();
             require("view/backend/listPostViewBackend.php"); // affiche la liste des billets
         }
 

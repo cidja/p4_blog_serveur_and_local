@@ -19,8 +19,21 @@ if(isset($_SESSION["user"]) && isset($_SESSION["mdp"])){ //on vérifie que l'on 
             <h1 class="mx-auto text-uppercase">Interface d'administration</h1>
         </div>
         <div class="row d-flex justify-content-between mb-5">
-            <div id="createpost"><a class="btn btn-success" href="index.php?action=createPostView"><i class="fas fa-plus-circle"></i>Créer un post </a></div>
-            <div id="signalComments"><a class="btn btn-success" href="index.php?action=signalCommentsView">Modération des commentaires</a></div>
+            <div id="createpost"><a class="btn btn-success" href="index.php?action=createPostView"><i class="fas fa-plus-circle"></i> Créer un post </a></div>
+            <?php 
+            $resultCountSignalComments =  implode(',',$countSignalComments->fetch(PDO::FETCH_ASSOC)); //utilisation de FETCH_ASSOC source: https://www.php.net/manual/fr/pdostatement.fetch.php
+            if($resultCountSignalComments == "0"){
+                ?>
+                <div><a class="btn btn-success" href="index.php?action=signalCommentsView">Aucun commentaire(s) a modérer</a></div>
+                <?php
+            }
+            else{
+                ?>
+                <div><a class="btn btn-warning" href="index.php?action=signalCommentsView"><?= $resultCountSignalComments; ?> commentaire(s) a modérer</a></div>
+                <?php
+            }
+            ?>
+            
         </div>
     
     
@@ -30,9 +43,9 @@ if(isset($_SESSION["user"]) && isset($_SESSION["mdp"])){ //on vérifie que l'on 
     ?>
         <div class="container jumbotron">
             <div class="row d-flex justify-content-between mb-4">
-                <div id="readpost"><a class="btn btn-success" href="index.php?action=postBackend&amp;id=<?= $data["id"]; ?>"><i class="fas fa-search-plus"></i>Vue détaillée</a></div>
-                <div id="updatepost"><a class="btn btn-success" href="index.php?action=updatePost&amp;id=<?= $data["id"]; ?>"><i class="fas fa-edit"></i>Modifier le post</a></div> <!--utilisation de $data["id"] pour le récupérer dans l'index.php !-->
-                <div id="deletepost"><a class="btn btn-success" href="index.php?action=deletePost&amp;id=<?= $data["id"]; ?>"><i class="fas fa-trash-alt"></i>Supprimer le post</a></div>
+                <div id="readpost"><a class="btn btn-success" href="index.php?action=postBackend&amp;id=<?= $data["id"]; ?>"><i class="fas fa-search-plus"></i> Vue détaillée</a></div>
+                <div id="updatepost"><a class="btn btn-success" href="index.php?action=updatePost&amp;id=<?= $data["id"]; ?>"><i class="fas fa-edit"></i> Modifier le post</a></div> <!--utilisation de $data["id"] pour le récupérer dans l'index.php !-->
+                <div id="deletepost"><a class="btn btn-success" href="index.php?action=deletePost&amp;id=<?= $data["id"]; ?>"><i class="fas fa-trash-alt"></i> Supprimer le post</a></div>
             </div>
             <div class="container-fluid">
                 <h3>
