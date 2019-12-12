@@ -12,11 +12,9 @@ class UserManager extends ManagerDb
         $db = $this->dbConnect(); 
         $check = $db->query("SELECT user,mdp FROM users");
         foreach($check as $data){ //boucle d'itération
-            if($data["user"] == $_POST["user"]){
-                if (password_verify($_POST["mdp"], $data["mdp"])){ //Source: https://www.php.net/manual/fr/function.password-verify.php
+            if(($data["user"] == $_POST["user"]) AND (password_verify($_POST["mdp"], $data["mdp"]))){
                     $_SESSION["user"] = $user; // Création des sessions
                     $_SESSION["mdp"] = $mdp; // Création des sessions
-                }
                 ToolsBackend::listPosts();
             }
             else {
