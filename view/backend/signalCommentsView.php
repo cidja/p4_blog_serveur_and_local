@@ -4,46 +4,64 @@ if(isset($_SESSION["user"]) && isset($_SESSION["mdp"])){ //on vérifie que l'on 
     $title = "Admin mon blog"; 
 
     ob_start(); ?>
- 
-    <h1>Administration super blog</h1>
-    <h3>Modération des commentaires</h3>
-        <?php 
-            $resultCountSignalComments =  implode(',',$countSignalComments->fetch(PDO::FETCH_ASSOC)); //utilisation de FETCH_ASSOC source: https://www.php.net/manual/fr/pdostatement.fetch.php
-        ?>
-        <div class="countSignalComments">
-            Il reste encore : <?= $resultCountSignalComments; ?> commentaires à modérer.
-        </div>
-        <?php
-            foreach($signalComments as $data)
-    
-            {
-            ?>
-            <div class="conteneurComment"> <!--utiliser pour créer un bloc pour chaque commentaires !-->
-                <div class="authorComment">
-                    <?= htmlspecialchars($data["author"]); ?> 
-                </div>
-                <div class="commentHour"> 
-                    le <?= $data['comment_date_fr'];?> 
-                </div>
-                <div id='commentsSignal'>
-                    <?=$data["comment"]; ?>
-                </div> 
-                <div id="ApprouveOrNotComment">
-                    <form action="/p4/index.php?action=signalCommentDecision&amp;id=<?= $data["id"]; ?>" method="post">
-                        <input type="radio" id="commentApprouve" name="commentChoice" value="commentApprouve">
-                        <label for="commentApprouve">Approuver le commentaire </label>
-                        <input type="radio" id="deleteComment" name="commentChoice" value="deleteComment">
-                        <label for="deleteComment">Supprimer le commentaire </label>
-                        <input type="submit" value="valider mon choix">
-                    </form>
+    <div id="backgroundSignalCommentsView">
+        <div class="container">
+            <a class="btn btn-info col mb-4 text-uppercase" href="/p4/index.php?action=backend">Retour à la liste des billets </a>
+            <div class="container jumbotron">
+                <div class="row text-center">
+                    <div class="col-lg-8 offset-lg-2">
+                        <h3>Modération des commentaires</h3>
+                        <?php 
+                        $resultCountSignalComments =  implode(',',$countSignalComments->fetch(PDO::FETCH_ASSOC)); //utilisation de FETCH_ASSOC source: https://www.php.net/manual/fr/pdostatement.fetch.php
+                        ?>
+                        <div class="countSignalComments">
+                            Il reste encore :<span class="font-weight-bold"> <?= $resultCountSignalComments; ?> </span>commentaires à modérer.
+                        </div>
+                        <?php
+                        foreach($signalComments as $data){
+                        ?>
+                        <div class="conteneurComment border border-secondary rounded bg-dark text-white"> <!--utiliser pour créer un bloc pour chaque commentaires !-->
+                            <div class="authorComment">
+                            <span class="text-uppercase">Auteur : </span>
+                            <?php echo $data["author"]." - ". $data['comment_date_fr'];?> 
+                            </div>
+                            <div id='commentsSignal'>
+                                <span class="text-uppercase">Contenu :</span>
+                                    <div class="content">
+                                        <?=$data["comment"]; ?>
+                                    </div>
+                            </div> 
+                            <div id="ApprouveOrNotComment">
+                                <form class="form-group" action="/p4/index.php?action=signalCommentDecision&amp;id=<?= $data["id"]; ?>" method="post">
+                                    <div>
+                                        <input type="radio" id="commentApprouve" name="commentChoice" value="commentApprouve">
+                                    <label class="text-success"for="commentApprouve">Approuver le commentaire </label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="deleteComment" name="commentChoice" value="deleteComment">
+                                    <label class="text-danger" for="deleteComment">Supprimer le commentaire </label>
+                                    </div>
+                                    <div>
+                                        <input class="btn btn-success text-uppercase" type="submit" value="valider mon choix">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <?php
+                                }
+                                ?>
+            <!--lien pour retourner à la liste des billets !-->
+                    </div>
                 </div>
             </div>
-            <!--lien pour retourner à la liste des billets !-->
             
-    <?php
-    }
-    ?>
-    <a href="/p4/index.php?action=backend">Retour à la liste des billets </a>
+                
+                
+            
+  
+    
+        </div> <!--Fin div container l9-->
+    </div> <!-- fin </div> backgroundSignalCommentsView
     <?php
     $signalComments->closeCursor();
 

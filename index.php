@@ -147,7 +147,7 @@ try { // on essai de faire des choses source: https://openclassrooms.com/fr/cour
         //Appel la méthode destroysession pour déconnexion de l'admim
         elseif($_GET["action"] == "sessionDestroy"){
             ToolsBackend::sessionStop();
-            header("location: index.php?action=listPosts");
+            header("location: index.php?action=home");
         }
     }
     else{

@@ -16,7 +16,7 @@ if(isset($_SESSION["user"]) && isset($_SESSION["mdp"])){ //on vérifie que l'on 
     </header>
     <div class="container">
         <div class="row">
-            <h1 class="mx-auto">Interface d'administration</h1>
+            <h1 class="mx-auto text-uppercase">Interface d'administration</h1>
         </div>
         <div class="row d-flex justify-content-between mb-5">
             <div id="createpost"><a class="btn btn-success" href="index.php?action=createPostView"><i class="fas fa-plus-circle"></i>Créer un post </a></div>
