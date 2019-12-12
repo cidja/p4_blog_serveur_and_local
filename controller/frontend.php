@@ -58,23 +58,7 @@ trait ToolsFrontend{ //création d'un trait pour pouvoir rester dans l'appel de 
             throw new Exception("Impossible de signaler le commentaire");
         }
         else {
-           
-            /*
-            Ceci est du code HTML
-             <script> 
-            
-            let signalLink = document.getElementById("signallink");
-            let newP = document.createElement("p"); // création d'un élément <p>
-            newP.textContent = "Le commentaire a bien était signalé";
-            signalLink.addEventListener("click", function ()
-            {
-                signalLink.style.display = "none";
-                signalLink.append(newP);
-                });
-                </script>
-                <?php
-*/
-            header("location: index.php?action=post&id=".$postId); // renvoi au menu principal
+           header("location: index.php?action=post&id=".$postId); // renvoi au menu principal
             }
             
         }

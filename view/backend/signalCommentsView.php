@@ -50,7 +50,6 @@ if(isset($_SESSION["user"]) && isset($_SESSION["mdp"])){ //on vérifie que l'on 
                         <?php
                                 }
                                 ?>
-            <!--lien pour retourner à la liste des billets !-->
                     </div>
                 </div>
             </div>

@@ -15,9 +15,9 @@ class CommentManager extends ManagerDb
     WHERE posts.id = ?
     ORDER BY comment_date DESC');
     $comments->execute(array($postId));
-    //SELECT id, post_id, author, comment, DATE_FORMAT(comment_date, "%d/%m/%Y à %Hh%imin%ss") AS comment_date_fr FROM comments WHERE post_id = ? ORDER BY comment_date DESC
-
+    
     return $comments;
+    
     }
 
     //fonction pour ajout d'un comentaire
