@@ -16,13 +16,6 @@ body{
 #filterHome{
     background-color: rgba(58, 53, 53, 0.8);
 }
-
-#backgroundListPostView, #backgroundPostView{
-    background-image: url("../img/Backpostview.jpg");
-    background-position: center;
-    height: 1000px;
-}
-
 #backgroundLogin{
     background-image : url("../img/Backlogin.jpg");
     background-position: center;
