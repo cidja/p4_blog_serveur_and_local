@@ -43,7 +43,7 @@ ob_start(); //Commencement de la capture ?>
                                 <p>Le roman se découpe en plusieurs articles que je vous invite a parcourir et a me laisser un petit commentaire,
                                     les avis des lecteurs sont très important pour l'avancement de ce projet.</p>
                                 <p>Excellente lecture à tous</p>
-                                <a class="col-md-2 btn btn-light mb-5" href="index.php?action=listPosts"> Consulter les articles</a>
+                                <a class="col-md-2 btn btn-success mb-5" href="index.php?action=listPosts"> Consulter les articles</a>
                             </div>
                         </div>
                     </div>
