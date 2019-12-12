@@ -13,7 +13,7 @@
                             </div>
                             <div class="form-group mt-2 text-center">
                                 <label for="user">
-                                    <input type="text" class="form-control ml-2 mt-2 mr-sm-2 mb-2  " name="user" id="user" placeholder="identifiant" required />
+                                    <input type="text" class="form-control ml-2 mt-2 mr-sm-2 mb-2  " name="user" id="user" placeholder="identifiant" required autofocus/>
                                 </label>
                             </div>
                             <div class="form-group text-center">

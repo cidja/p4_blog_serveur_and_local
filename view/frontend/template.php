@@ -28,13 +28,13 @@
             <div class="collapse navbar-collapse justify-content-md-end align-items-sm-start" id="collapsibleNavbar">
                 <ul class="navbar-nav">
                 <li class="nav-item ml-1">
-                    <a class="nav-link" href="index.php?action=home">Accueil</a>
+                    <a class="nav-link" href="index.php?action=home">ACCUEIL</a>
                 </li>
                 <li class="nav-item ml-2">
-                    <a class="nav-link" href="index.php?action=listPosts">Articles</a>
+                    <a class="nav-link" href="index.php?action=listPosts">ARTICLES</a>
                 </li>
                 <li class="nav-item">
-                    <a id="adminLink" class="btn btn-secondary" title="login" href="index.php?action=formAdmin">Connexion</a>
+                    <a id="adminLink" class="btn btn-secondary" title="login" href="index.php?action=formAdmin">CONNEXION</a>
                 </li>
                 </ul>
             </div>
