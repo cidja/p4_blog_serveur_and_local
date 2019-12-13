@@ -10,17 +10,17 @@ if(isset($_SESSION["user"]) && isset($_SESSION["mdp"])){ //on vérifie que l'on 
                 <div class="row justify-content-center">
                     <div class="mb-5 mt-4">
                         <form class="form-login" action="index.php?action=updatePassword" method="post">
-                            <div class="text-center text-white">
+                            <div class="text-center">
                                 Nouveau mot de passe administrateur :
                             </div>
                             <div class="form-group text-center">
                                 <label for="newMdp">
-                                    <input class="form-input" type="password" id="newMdp" name="newMdp" placeholder="rentrez votre nouveau mot de passe">
+                                    <input class="form-control" type="password" id="newMdp" name="newMdp" placeholder="nouveau mot de passe" required autofocus>
                                 </label>
                             </div>
                             <div class="form-group text-center">
                                 <label for="newMdpRepeat">
-                                    <input class="form-input" type="password" id="newMdpRepeat" name="newMdpRepeat" placeholder="rentez le mot de passe à nouveau" required>
+                                    <input class="form-control" type="password" id="newMdpRepeat" name="newMdpRepeat" placeholder="rentrez le mot de passe à nouveau" required>
                                 </label>
                             </div>
                             <div class="text-center">

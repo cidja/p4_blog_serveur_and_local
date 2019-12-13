@@ -27,7 +27,7 @@ class UserManager extends ManagerDb
         if($newMdp === $newMdpRepeat){
             $db = $this->dbConnect();
                 $mdp = password_hash($newMdp,PASSWORD_DEFAULT); //source: https://www.php.net/manual/en/function.password-hash.php
-                $change = $db->prepare("UPDATE users SET mdp=? WHERE user='test'"); 
+                $change = $db->prepare("UPDATE users SET mdp=? WHERE user='admin'"); 
                 $changeresult = $change->execute(array($mdp));
                 echo "Mot de passe modifié";
                 ?>
