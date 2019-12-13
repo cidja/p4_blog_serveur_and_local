@@ -89,9 +89,24 @@
             $delete = $postManager->deletePost($postId); // Appel de la méthode deletePost de l'objet PostManager
         }
 
+        //fonction pour afficher le formNewPassword
+        public static function formNewPassword()
+        {
+            require("view/backend/updatePassword.php");
+        }
+
+        //Fonction pour modifier le mot de passe
+        public static function changePassword($mdp1, $mdprepeat)
+        {
+            $userManager = new UserManager();
+            $newPassword = $userManager->changePassword($mdp1, $mdprepeat);
+        }
+
         public static function sessionStop()
         {
             $sessionManager = new SessionManager(); // Création d'un objet SessionManager()
             $sessionDestroy = $sessionManager->sessionStop(); // Appel de la méthode sessionStop() de l'objet SessionManager()
         }
+
+
     }

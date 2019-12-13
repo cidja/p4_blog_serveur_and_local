@@ -134,7 +134,17 @@ try { // on essai de faire des choses source: https://openclassrooms.com/fr/cour
                 throw new Exception("Aucun id de post envoyé");
             }
         }
+        //Appel de la méthode pour afficher le formNewPassword
+        elseif($_GET["action"] == "formNewPassword"){
+            ToolsBackend::formNewPassword();
+        }
 
+        //Appel de la méthode pour modifier le mot de passe admin
+        elseif($_GET["action"] == "updatePassword"){
+            $newMdp = htmlspecialchars($_POST["newMdp"]);
+            $newMdpRepeat = htmlspecialchars($_POST["newMdpRepeat"]);
+            ToolsBackend::changePassword($newMdp, $newMdpRepeat);
+        }
         //Appel la méthode destroysession pour déconnexion de l'admim
         elseif($_GET["action"] == "sessionDestroy"){
             ToolsBackend::sessionStop();

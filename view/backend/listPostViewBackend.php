@@ -14,6 +14,7 @@ if(isset($_SESSION["user"]) && isset($_SESSION["mdp"])){ //on vérifie que l'on 
         </div>
     </div>
     </header>
+    <a href="index.php?action=formNewPassword">Modifier le mot de passe administrateur</a>
     <div class="container">
         <div class="row">
             <h1 class="mx-auto text-uppercase">Interface d'administration</h1>

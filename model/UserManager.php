@@ -22,12 +22,19 @@ class UserManager extends ManagerDb
             }
         }
     }
-    public function changePassword($mdp)
+    public function changePassword($newMdp, $newMdpRepeat)
     {
-        $db = $this->dbConnect();
-                $mdp = password_hash($_GET["mdp"]);
-                $change = $db->prepare("UPDATE users SET mdp=? WHERE user='admin'"); 
+        if($newMdp === $newMdpRepeat){
+            $db = $this->dbConnect();
+                $mdp = password_hash($newMdp,PASSWORD_DEFAULT); //source: https://www.php.net/manual/en/function.password-hash.php
+                $change = $db->prepare("UPDATE users SET mdp=? WHERE user='test'"); 
                 $changeresult = $change->execute(array($mdp));
-
+                echo "Mot de passe modifié";
+                ?>
+                <a href="index.php?action=backend"> Retour à l'admin</a>
+                <?php
+        } else {
+            echo "les mots de passe ne correspondent pas";
+        }
     }
 }
