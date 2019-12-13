@@ -34,7 +34,7 @@ if(isset($_SESSION["user"]) && isset($_SESSION["mdp"])){ //on vérifie que l'on 
                             <div id="ApprouveOrNotComment">
                                 <form class="form-group" action="/p4/index.php?action=signalCommentDecision&amp;id=<?= $data["id"]; ?>" method="post">
                                     <div>
-                                        <input type="radio" id="commentApprouve" name="commentChoice" value="commentApprouve">
+                                        <input type="radio" id="commentApprouve" name="commentChoice" value="commentApprouve" required>
                                     <label class="text-success"for="commentApprouve">Approuver le commentaire </label>
                                     </div>
                                     <div>
