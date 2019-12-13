@@ -35,7 +35,7 @@
                                 <div class="row">
                                     <div class="col-md-12 d-flex">
                                         <span class="ml-2 font-weight-bold"><?= $comment["author"] // Affichage de l'auteur du commentaire ?></span>
-                                        - le <?= $comment["comment_date"]  // Affichage de la date du commentaire ?>
+                                        - le <?= $comment["comment_date_fr"]  // Affichage de la date du commentaire ?>
                                     </div>
                                     <div class="col-md-9 ml-2">
                                         <?= nl2br(htmlspecialchars_decode($comment["comment"])) // Affichage du contenu du commentaire ?>
