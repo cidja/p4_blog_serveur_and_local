@@ -25,7 +25,7 @@
             <section class="mb-4 pt-2 pb-4" id="viewComment">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-8 offset-lg-2">
+                        <div class="col-lg-8 offset-lg-2 text-white">
                             <h5 class="text-center text-white">Commentaires</h5>
                             <?php
                              while($comment = $comments->fetch()) // On parcours le tableau source: https://openclassrooms.com/fr/courses/4670706-adoptez-une-architecture-mvc-en-php/4678891-nouvelle-fonctionnalite-afficher-des-commentaires#/id/r-4681307
@@ -43,8 +43,8 @@
                                     <div class="col-6 col-sm-4 col-md-4 offset-sm-4 offset-md-7 mt-2 mb-3 mr-2">
                                     <?php if ($comment["comment_signal"] == 0){ //condition qui vérifie si comment_signal = 1 ou 0
                                         ?>
-                                        <button class="btn btn-outline-success" data-toggle="button" aria-pressed="false" autocomplete="off" type="button">
-                                            <a class="text-success" href="index.php?action=signalComment&amp;id=<?= $comment["id"]?>&post_id=<?= $comment["post_id"]?>" id="signallink">Signaler</a>
+                                        <button class="btn btn-success" data-toggle="button" aria-pressed="false" autocomplete="off" type="button">
+                                            <a class="text-dark" href="index.php?action=signalComment&amp;id=<?= $comment["id"]?>&post_id=<?= $comment["post_id"]?>" id="signallink">Signaler</a>
                                         </button><!--Utiliser pour renvoyer sur une page pour valider la signalisation de commentaire !-->
                                         <?php
                                         } else {
