@@ -1,4 +1,5 @@
 <?php //deviens notre routeur 
+setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
 session_start(); // enregistrement des paramètres pour l'admin source: http://www.lephpfacile.com/cours/18-les-sessions Ligne 64
 //source: https://openclassrooms.com/fr/courses/4670706-adoptez-une-architecture-mvc-en-php/4682351-creer-un-routeur#/id/r-4682481
 

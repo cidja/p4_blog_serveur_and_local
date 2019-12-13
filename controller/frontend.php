@@ -62,4 +62,36 @@ trait ToolsFrontend{ //création d'un trait pour pouvoir rester dans l'appel de 
             }
             
         }
+    public static function changeDate($date, $format = "%a %d %b %Y", $duree = "0 day") {
+        //pour changer le format de la date
+        /*
+          %a     >     Mon
+          %A     >     Monday
+          %w     >     1
+          %d  >     1 JOUR
+          %-d  >     01 JOUR
+          %b     >    Sep
+          %B     >     September
+          %m     >     09
+          %-m >    9
+          %y     >    13
+          %Y     >     2013
+          %H  >     07 HEURE 24
+          %-H >     7 HEURE 24
+          %I  >     07 HEURE 12
+          %-I >     7 HEURE 12
+          %M     >     06
+          %-M >    6
+          %S     >     05
+          %-S >     5
+         */
+    
+    
+        if ($date != '' && $date != '0000-00-00') {
+            $datejour = strftime($format, strtotime($duree, strtotime($date)));
+            return $datejour;
+        } else {
+            return '';
+        }
+    }
     }
