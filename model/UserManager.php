@@ -22,4 +22,12 @@ class UserManager extends ManagerDb
             }
         }
     }
+    public function changePassword($mdp)
+    {
+        $db = $this->dbConnect();
+                $mdp = password_hash($_GET["mdp"]);
+                $change = $db->prepare("UPDATE users SET mdp=? WHERE user='admin'"); 
+                $changeresult = $change->execute(array($mdp));
+
+    }
 }

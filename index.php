@@ -64,11 +64,6 @@ try { // on essai de faire des choses source: https://openclassrooms.com/fr/cour
                 $mdp = $_POST["mdp"]; 
                 ToolsBackend::checkUser($user, $mdp);
                 
-                /*if(($user == "admin") && ($mdp == "secret")){
-                    $_SESSION["user"] = $user;
-                    $_SESSION["mdp"] = $mdp;
-                    ToolsBackend::listPosts(); // affichage du template backend
-                } */
             }
             else {
                 throw new Exception("Erreur mauvais mot de passe ou identifiant");  
