@@ -7,20 +7,23 @@ if(isset($_SESSION["user"]) && isset($_SESSION["mdp"])){ //on vérifie que l'on 
     <header>
     <!--Utiliser pour afficher le formulaire de connexion !-->
     <div class="container accessbackend"> 
-        <div class="row d-flex flex-row-reverse">
+        <div class="row d-flex justify-content-end">
             <form action="index.php?action=sessionDestroy" method="post">
             <input class="btn btn-warning btn-lg" type="submit" value="DECONNEXION" />
             </form>
         </div>
     </div>
     </header>
-    <a href="index.php?action=formNewPassword">Modifier le mot de passe administrateur</a>
+    <div class="container">
+        
+    </div>
     <div class="container">
         <div class="row">
             <h1 class="mx-auto text-uppercase">Interface d'administration</h1>
         </div>
         <div class="row d-flex justify-content-between mb-5">
             <div id="createpost"><a class="btn btn-success" href="index.php?action=createPostView"><i class="fas fa-plus-circle"></i> Créer un post </a></div>
+            <div><a class="btn btn-primary" href="index.php?action=formNewPassword">Modifier le mot de passe administrateur</a></div>
             <?php 
             $resultCountSignalComments =  implode(',',$countSignalComments->fetch(PDO::FETCH_ASSOC)); //utilisation de FETCH_ASSOC source: https://www.php.net/manual/fr/pdostatement.fetch.php
             if($resultCountSignalComments == "0"){

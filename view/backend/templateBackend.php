@@ -21,8 +21,8 @@
     
     
     <body>
-    
+    <div id="backgroundBackend">
         <?= $content ?> <!--va contenir ce que l'on veut mettre dedans direction indexView.php !-->
-    
+    </div>
     </body>
 </html>
