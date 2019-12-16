@@ -18,12 +18,12 @@ if(isset($_SESSION["user"]) && isset($_SESSION["mdp"])){ //on vérifie que l'on 
         
     </div>
     <div class="container">
-        <div class="row">
+        <div class="row mb-3">
             <h1 class="mx-auto text-uppercase">Interface d'administration</h1>
         </div>
-        <div class="row d-flex justify-content-between mb-5">
+        <div class="row d-flex justify-content-between mb-2">
             <div id="createpost"><a class="btn btn-success" href="index.php?action=createPostView"><i class="fas fa-plus-circle"></i> Créer un post </a></div>
-            <div><a class="btn btn-primary" href="index.php?action=formNewPassword">Modifier le mot de passe administrateur</a></div>
+            <div><a class="btn btn-primary" href="index.php?action=formNewPassword">Modifier le mot de passe</a></div>
             <?php 
             $resultCountSignalComments =  implode(',',$countSignalComments->fetch(PDO::FETCH_ASSOC)); //utilisation de FETCH_ASSOC source: https://www.php.net/manual/fr/pdostatement.fetch.php
             if($resultCountSignalComments == "0"){
@@ -46,7 +46,7 @@ if(isset($_SESSION["user"]) && isset($_SESSION["mdp"])){ //on vérifie que l'on 
         {
     ?>
         <div class="container jumbotron">
-            <div class="row d-flex justify-content-between mb-4">
+            <div class="row d-flex justify-content-between mb-2">
                 <div id="readpost"><a class="btn btn-success" href="index.php?action=postBackend&amp;id=<?= $data["id"]; ?>"><i class="fas fa-search-plus"></i> Vue détaillée</a></div>
                 <div id="updatepost"><a class="btn btn-success" href="index.php?action=updatePost&amp;id=<?= $data["id"]; ?>"><i class="fas fa-edit"></i> Modifier le post</a></div> <!--utilisation de $data["id"] pour le récupérer dans l'index.php !-->
                 <div id="deletepost"><a class="btn btn-success" href="index.php?action=deletePost&amp;id=<?= $data["id"]; ?>"><i class="fas fa-trash-alt"></i> Supprimer le post</a></div>

@@ -16,11 +16,12 @@ body{
 #filterHome{
     background-color: rgba(58, 53, 53, 0.8);
 }
-#backgroundLogin, #backgroundBackend{
+#backgroundLogin{
     background-image : url("../img/Backlogin.jpg");
     background-position: center;
     height: 1000px !important;
 }
+
 
 /* PARTIE COMMENTAIRES */
 #viewComment{
