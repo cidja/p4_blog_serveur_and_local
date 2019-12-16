@@ -43,7 +43,7 @@
                                     <div class="col-6 col-sm-4 col-md-4 offset-sm-4 offset-md-7 mt-2 mb-3 mr-2">
                                     <?php if ($comment["comment_signal"] == 0){ //condition qui vérifie si comment_signal = 1 ou 0
                                         ?>
-                                        <button class="btn btn-success" data-toggle="button" aria-pressed="false" autocomplete="off" type="button">
+                                        <button class="btn btn-success" type="button">
                                             <a class="text-dark" href="index.php?action=signalComment&amp;id=<?= $comment["id"]?>&post_id=<?= $comment["post_id"]?>" id="signallink">Signaler</a>
                                         </button><!--Utiliser pour renvoyer sur une page pour valider la signalisation de commentaire !-->
                                         <?php
