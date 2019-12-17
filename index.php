@@ -141,9 +141,10 @@ try { // on essai de faire des choses source: https://openclassrooms.com/fr/cour
 
         //Appel de la méthode pour modifier le mot de passe admin
         elseif($_GET["action"] == "updatePassword"){
+            $oldMdp = htmlspecialchars($_POST["oldMdp"]);
             $newMdp = htmlspecialchars($_POST["newMdp"]);
             $newMdpRepeat = htmlspecialchars($_POST["newMdpRepeat"]);
-            ToolsBackend::changePassword($newMdp, $newMdpRepeat);
+            ToolsBackend::changePassword($oldMdp, $newMdp, $newMdpRepeat);
         }
         //Appel la méthode destroysession pour déconnexion de l'admim
         elseif($_GET["action"] == "sessionDestroy"){

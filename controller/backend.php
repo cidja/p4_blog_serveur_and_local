@@ -96,10 +96,11 @@
         }
 
         //Fonction pour modifier le mot de passe
-        public static function changePassword($mdp1, $mdprepeat)
+        public static function changePassword($oldMdp, $mdp1, $mdprepeat)
         {
             $userManager = new UserManager();
-            $newPassword = $userManager->changePassword($mdp1, $mdprepeat);
+            $newPassword = $userManager->changePassword($oldMdp, $mdp1, $mdprepeat);
+
         }
 
         public static function sessionStop()

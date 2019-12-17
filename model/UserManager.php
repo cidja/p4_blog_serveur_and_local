@@ -22,19 +22,26 @@ class UserManager extends ManagerDb
             }
         }
     }
-    public function changePassword($newMdp, $newMdpRepeat)
+    
+    public function changePassword($oldMdp,$newMdp, $newMdpRepeat)
     {
-        if($newMdp === $newMdpRepeat){
-            $db = $this->dbConnect();
-                $mdp = password_hash($newMdp,PASSWORD_DEFAULT); //source: https://www.php.net/manual/en/function.password-hash.php
-                $change = $db->prepare("UPDATE users SET mdp=? WHERE user='admin'"); 
-                $changeresult = $change->execute(array($mdp));
-                echo "Mot de passe modifié";
-                ?>
-                <a href="index.php?action=backend"> Retour à l'admin</a>
-                <?php
-        } else {
-            echo "les mots de passe ne correspondent pas";
+        $db= $this->dbConnect(); //fonction qui va vérifier si l'ancien mot de passe est bon 
+        $checkMdp = $db->query("SELECT user,mdp FROM users");
+        foreach($checkMdp as $data){
+            if(password_verify($oldMdp, $data["mdp"])){
+                if($newMdp === $newMdpRepeat){
+                    $db = $this->dbConnect();
+                        $mdp = password_hash($newMdp,PASSWORD_DEFAULT); //source: https://www.php.net/manual/en/function.password-hash.php
+                        $change = $db->prepare("UPDATE users SET mdp=?, update_date=NOW() WHERE user='admin'"); 
+                        $changeresult = $change->execute(array($mdp));
+                        echo "Mot de passe modifié";
+                        ?>
+                        <a href="index.php?action=backend"> Retour à l'admin</a>
+                        <?php
+                }
+            }else{
+                echo "les mots de passe ne correspondent pas";
+            }
         }
     }
 }
