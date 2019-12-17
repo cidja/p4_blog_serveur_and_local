@@ -39,3 +39,13 @@ body{
     padding-top: 180px;
     padding-bottom: 180px;
 }
+
+
+/* partie UpdatePassword */
+.show-password {
+	font-size: 9px !important;
+	text-transform: uppercase;
+	
+	cursor: pointer;
+
+}

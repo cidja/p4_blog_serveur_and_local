@@ -15,7 +15,7 @@
         <script src="https://kit.fontawesome.com/bad7172f0a.js" crossorigin="anonymous"></script> <!--cdn fontawesome source: https://fontawesome.com/kits/bad7172f0a/settings !-->
         <script src="https://cdn.tiny.cloud/1/er48ufvc7i8vzzseiz1tka82m7p8bec1kdtkmjzdoctvosu2/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
         <script>tinymce.init({selector:'#content'});</script> <!--CDN tony mce source: https://www.tiny.cloud/get-tiny/ !-->
-        
+        <script src="public/js/buttonHide.js"></script>
        
     </head>
     
@@ -25,4 +25,5 @@
         <?= $content ?> <!--va contenir ce que l'on veut mettre dedans direction indexView.php !-->
     
     </body>
+    
 </html>

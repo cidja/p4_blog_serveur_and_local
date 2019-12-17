@@ -13,23 +13,26 @@ if(isset($_SESSION["user"]) && isset($_SESSION["mdp"])){ //on vérifie que l'on 
                             <div class="text-center">
                                 Nouveau mot de passe administrateur :
                             </div>
-                            <div class="form-group text-center">
+                            <div class="form-group text-center mb-1">
                                 <label for="oldMdp">
-                                    <input class="form-control" type="password" id="oldMdp" name="oldMdp" placeholder="ancien mot de passe" required autofocus>
+                                    <input class="form-control " type="password" id="oldMdp" name="oldMdp" placeholder="ancien mot de passe" required autofocus>
+                                    <p class="show-password btn btn-primary mt-1">Afficher</p> <!--source: http://www.rbastien.com/blog/2015/02/afficher-password-formulaire/!-->
                                 </label>
                             </div>
-                            <div class="form-group text-center">
+                            <div class="form-group text-center mb-1">
                                 <label for="newMdp">
                                     <input class="form-control" type="password" id="newMdp" name="newMdp" placeholder="nouveau mot de passe" required>
+                                    <span class="show-password btn btn-primary mt-1">Afficher</span> <!--source: http://www.rbastien.com/blog/2015/02/afficher-password-formulaire/!-->
                                 </label>
                             </div>
-                            <div class="form-group text-center">
+                            <div class="form-group text-center mb-1">
                                 <label for="newMdpRepeat">
                                     <input class="form-control" type="password" id="newMdpRepeat" name="newMdpRepeat" placeholder="rentrez le mot de passe à nouveau" required>
+                                    <span class="show-password btn btn-primary mt-1">Afficher</span> <!--source: http://www.rbastien.com/blog/2015/02/afficher-password-formulaire/!-->
                                 </label>
                             </div>
                             <div class="text-center">
-                                <input class="btn btn-success" type="submit" value="valider">
+                                <input class="container-fluid btn btn-success" type="submit" value="valider">
                             </div>
                         </form>
                     </div>
