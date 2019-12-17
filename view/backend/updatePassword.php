@@ -14,8 +14,13 @@ if(isset($_SESSION["user"]) && isset($_SESSION["mdp"])){ //on vérifie que l'on 
                                 Nouveau mot de passe administrateur :
                             </div>
                             <div class="form-group text-center">
+                                <label for="oldMdp">
+                                    <input class="form-control" type="password" id="oldMdp" name="oldMdp" placeholder="ancien mot de passe" required autofocus>
+                                </label>
+                            </div>
+                            <div class="form-group text-center">
                                 <label for="newMdp">
-                                    <input class="form-control" type="password" id="newMdp" name="newMdp" placeholder="nouveau mot de passe" required autofocus>
+                                    <input class="form-control" type="password" id="newMdp" name="newMdp" placeholder="nouveau mot de passe" required>
                                 </label>
                             </div>
                             <div class="form-group text-center">
