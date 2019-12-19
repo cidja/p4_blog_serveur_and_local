@@ -61,7 +61,7 @@ try { // on essai de faire des choses source: https://openclassrooms.com/fr/cour
             }
             elseif(empty($_SESSION["user"]) && empty($_SESSION["mdp"])){ //Si $_SESSION empty on crée les variables $user et $mdp pour connexion backend
                 $user = htmlspecialchars($_POST["user"]); // htmlspecialchars pour éviter une faille de sécurité 
-                $mdp = $_POST["mdp"]; 
+                $mdp = htmlspecialchars($_POST["mdp"]); 
                 ToolsBackend::checkUser($user, $mdp);
                 
             }
