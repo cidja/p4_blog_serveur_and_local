@@ -32,7 +32,7 @@ class PostManager  extends ManagerDb
         $postIdEpure    = htmlspecialchars($postId);
         $db = $this->dbConnect();
         $req = $db->prepare("UPDATE posts SET title = ?, content = ? WHERE id = ?");
-        $updatePost = $req->execute(array($title,$content,$postId));
+        $updatePost = $req->execute(array($titleEpure,$contentEpure,$postIdEpure));
         return $updatePost;
         
     }
