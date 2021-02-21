@@ -23,8 +23,15 @@ if(isset($_SESSION["user"]) && isset($_SESSION["mdp"])){ //on vérifie que l'on 
         </div>
         <div class="row d-flex justify-content-between mb-2">
             <div id="createpost"><a class="btn btn-success" href="index.php?action=createPostView"><i class="fas fa-plus-circle"></i> Créer un post </a></div>
-            <div><a class="btn btn-primary" href="index.php?action=formNewPassword">Modifier le mot de passe</a></div>
-            <?php 
+            <?php if($_SESSION["user"] == "demo"){ //affiche un bouton différent en fonction si user demo ou autre
+                ?>
+                <div><a class="btn btn-primary" href="#">Impossible de modifier le mot de passe en mode démo</a></div>
+                <?php
+            } else{
+                ?>
+                    <div><a class="btn btn-primary" href="index.php?action=formNewPassword">Modifier le mot de passe</a></div>
+                <?php
+            }
             $resultCountSignalComments =  implode(',',$countSignalComments->fetch(PDO::FETCH_ASSOC)); //utilisation de FETCH_ASSOC source: https://www.php.net/manual/fr/pdostatement.fetch.php
             if($resultCountSignalComments == "0"){
                 ?>
